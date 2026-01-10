@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Page Not Found</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #f72585;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --success-color: #4cc9f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        .container-404 {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .error-content {
+            max-width: 900px;
+            width: 100%;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            padding: 3rem;
+            position: relative;
+        }
+        
+        .error-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .error-title {
+            font-size: 8rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--primary-color);
+            text-shadow: 5px 5px 0 rgba(67, 97, 238, 0.1);
+            margin-bottom: 0.5rem;
+        }
+        
+        .error-subtitle {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        .error-message {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+        }
+        
+        .error-visual {
+            position: relative;
+            height: 200px;
+            margin: 3rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .broken-link {
+            font-size: 5rem;
+            color: var(--accent-color);
+            position: absolute;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .broken-link:nth-child(1) {
+            left: 15%;
+            top: 10%;
+            animation-delay: 0s;
+        }
+        
+        .broken-link:nth-child(2) {
+            left: 25%;
+            bottom: 20%;
+            animation-delay: 0.5s;
+        }
+        
+        .broken-link:nth-child(3) {
+            right: 25%;
+            top: 20%;
+            animation-delay: 1s;
+        }
+        
+        .broken-link:nth-child(4) {
+            right: 15%;
+            bottom: 10%;
+            animation-delay: 1.5s;
+        }
+        
+        .error-code {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .error-code h5 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .error-code code {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn-404 {
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary-404 {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary-404:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+        }
+        
+        .btn-outline-404 {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-404:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+        }
+        
+        .search-box {
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+        
+        .search-box .input-group {
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .search-box .form-control {
+            border-radius: 50px 0 0 50px;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .search-box .btn {
+            border-radius: 0 50px 50px 0;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+        }
+        
+        .error-footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .error-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .error-title {
+                font-size: 6rem;
+            }
+            
+            .error-subtitle {
+                font-size: 2rem;
+            }
+            
+            .broken-link {
+                font-size: 3.5rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-404 {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .error-title {
+                font-size: 5rem;
+            }
+            
+            .error-subtitle {
+                font-size: 1.7rem;
+            }
+            
+            .broken-link {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-404">
+        <div class="error-content">
+            <div class="error-header">
+                <h1 class="error-title">404</h1>
+                <h2 class="error-subtitle">Page Not Found</h2>
+                <p class="error-message">Oops! The page you're looking for seems to have wandered off into the digital void. Don't worry, you can find your way back using the options below.</p>
+            </div>
+            
+            <div class="error-visual">
+                <i class="fas fa-link-slash broken-link"></i>
+                <i class="fas fa-unlink broken-link"></i>
+                <i class="fas fa-ban broken-link"></i>
+                <i class="fas fa-exclamation-triangle broken-link"></i>
+            </div>
+            
+            <div class="search-box">
+                <p class="text-center mb-3">Try searching for what you need:</p>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search our website..." id="searchInput">
+                    <button class="btn" type="button" id="searchButton">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+            
+            <div class="error-code">
+                <h5>Error Details:</h5>
+                <code>GET /page-not-found HTTP/1.1</code><br>
+                <code>Status: 404 Not Found</code><br>
+                <code>Requested URL: <span id="current-url"></span></code>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-primary-404 btn-404" id="goHomeBtn">
+                    <i class="fas fa-home"></i> Go to Homepage
+                </button>
+                <button class="btn btn-outline-404 btn-404" id="goBackBtn">
+                    <i class="fas fa-arrow-left"></i> Go Back
+                </button>
+                <button class="btn btn-outline-404 btn-404" id="contactBtn">
+                    <i class="fas fa-envelope"></i> Contact Support
+                </button>
+            </div>
+            
+            <div class="error-footer">
+                <p>&copy; 2023 Your Company. All rights reserved. | <a href="#" class="text-decoration-none">Privacy Policy</a> | <a href="#" class="text-decoration-none">Terms of Service</a></p>
+                <p class="mb-0">If you believe this is an error, please <a href="#" id="reportError" class="text-decoration-none">report the issue</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Set current URL in the error details
+        document.getElementById('current-url').textContent = window.location.href;
+        
+        // Go Home button functionality
+        document.getElementById('goHomeBtn').addEventListener('click', function() {
+            window.location.href = '/';
+        });
+        
+        // Go Back button functionality
+        document.getElementById('goBackBtn').addEventListener('click', function() {
+            window.history.back();
+        });
+        
+        // Contact Support button functionality
+        document.getElementById('contactBtn').addEventListener('click', function() {
+            alert('Redirecting to contact support page...');
+            // In a real application, you would redirect to the contact page
+            // window.location.href = '/contact';
+        });
+        
+        // Search functionality
+        document.getElementById('searchButton').addEventListener('click', performSearch);
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+        
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.trim();
+            if (searchTerm) {
+                alert(`Searching for: "${searchTerm}"\nIn a real application, this would redirect to search results.`);
+                // In a real application, you would redirect to search results
+                // window.location.href = `/search?q=${encodeURIComponent(searchTerm)}`;
+            } else {
+                alert('Please enter a search term.');
+                document.getElementById('searchInput').focus();
+            }
+        }
+        
+        // Report error link
+        document.getElementById('reportError').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Thank you for reporting the error. Our team will look into it.');
+        });
+        
+        // Add some interactive animation to the 404 number
+        const errorTitle = document.querySelector('.error-title');
+        errorTitle.addEventListener('mouseover', function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        errorTitle.addEventListener('mouseout', function() {
+            this.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>

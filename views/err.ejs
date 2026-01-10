@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Occurred</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .error-card {
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: none;
+        }
+        .error-icon {
+            font-size: 4rem;
+            color: #dc3545;
+        }
+        .error-message-box {
+            background: #f8f9fa;
+            border-left: 4px solid #dc3545;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container error-container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="error-card card p-4">
+                    <div class="card-body text-center">
+                        <!-- Error Icon -->
+                        <div class="mb-3">
+                            <i class="bi bi-x-circle-fill error-icon"></i>
+                        </div>
+                        
+                        <!-- Title -->
+                        <h2 class="h4 text-danger mb-3">Error</h2>
+                        
+                        <!-- Error Message Container -->
+                        <div class="mb-4">
+                            <div class="error-message-box p-3 rounded text-start" id="errorMessage">
+                                <!-- Error message will be displayed here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="d-flex gap-2 justify-content-center mt-4">
+                            <button onclick="window.location.href='/'" class="btn btn-primary btn-sm">
+                                <i class="bi bi-house me-1"></i>Home
+                            </button>
+                            <button onclick="window.history.back()" class="btn btn-outline-secondary btn-sm">
+                                <i class="bi bi-arrow-left me-1"></i>Back
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to get error message from URL
+        function getErrorMessage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let errorMsg = '';
+            
+            // Try different parameter names that might contain the error
+            const possibleParams = ['err.message', 'error', 'message', 'err', 'msg'];
+            
+            for (const param of possibleParams) {
+                const value = urlParams.get(param);
+                if (value) {
+                    errorMsg = decodeURIComponent(value);
+                    break;
+                }
+            }
+            
+            // If no error message found in URL, show a default
+            if (!errorMsg) {
+                errorMsg = 'An error occurred, but no specific error message was provided.';
+            }
+            
+            // Display the error message
+            document.getElementById('errorMessage').textContent = errorMsg;
+            
+            // Update page title
+            document.title = 'Error: ' + (errorMsg.length > 50 ? 
+                errorMsg.substring(0, 50) + '...' : errorMsg);
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', getErrorMessage);
+    </script>
+</body>
+</html>

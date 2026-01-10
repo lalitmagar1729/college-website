@@ -1,0 +1,218 @@
+<%- include("navbar.ejs") %>
+
+<style>
+  .faculty-hero {
+    background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(124, 58, 237, 0.8)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 80px 0;
+    margin-bottom: 3rem;
+  }
+
+  .faculty-card {
+    border: none;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .faculty-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(67, 97, 238, 0.15);
+  }
+
+  .faculty-img-container {
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .faculty-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .faculty-card:hover .faculty-img {
+    transform: scale(1.1);
+  }
+
+  .faculty-info {
+    padding: 1.5rem;
+  }
+
+  .faculty-name {
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.25rem;
+  }
+
+  .faculty-designation {
+    color: #2563EB;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .faculty-details {
+    font-size: 0.9rem;
+    color: #4b5563;
+  }
+
+  .faculty-details p {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .faculty-details i {
+    width: 20px;
+    color: #7C3AED;
+    margin-right: 8px;
+  }
+
+</style>
+
+<!-- Hero Section -->
+<section class="faculty-hero text-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold mb-3">Our Distinguished Faculty</h1>
+    <p class="lead fs-5 text-light opacity-75">Meet the mentors shaping the future of our students</p>
+  </div>
+</section>
+
+<!-- Faculty Grid -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row gy-4">
+      
+      <!-- Faculty 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="faculty-card">
+          <div class="faculty-img-container">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Faculty" class="faculty-img">
+          </div>
+          <div class="faculty-info">
+            <h4 class="faculty-name">Dr. Sarah Johnson</h4>
+            <span class="faculty-designation">Principal</span>
+            
+            <div class="faculty-details">
+              <p><i class="fas fa-building"></i> <strong>Dept:</strong> Administration</p>
+              <p><i class="fas fa-graduation-cap"></i> <strong>Qual:</strong> PhD in Education</p>
+              <p><i class="fas fa-briefcase"></i> <strong>Exp:</strong> 20+ Years</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Faculty 2 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="faculty-card">
+          <div class="faculty-img-container">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Faculty" class="faculty-img">
+          </div>
+          <div class="faculty-info">
+            <h4 class="faculty-name">Prof. Alan Turing</h4>
+            <span class="faculty-designation">Head of Department</span>
+            
+            <div class="faculty-details">
+              <p><i class="fas fa-laptop-code"></i> <strong>Dept:</strong> Computer Science</p>
+              <p><i class="fas fa-graduation-cap"></i> <strong>Qual:</strong> PhD in AI</p>
+              <p><i class="fas fa-briefcase"></i> <strong>Exp:</strong> 15 Years</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Faculty 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="faculty-card">
+          <div class="faculty-img-container">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Faculty" class="faculty-img">
+          </div>
+          <div class="faculty-info">
+            <h4 class="faculty-name">Dr. Marie Curie</h4>
+            <span class="faculty-designation">Senior Professor</span>
+            
+            <div class="faculty-details">
+              <p><i class="fas fa-atom"></i> <strong>Dept:</strong> Physics</p>
+              <p><i class="fas fa-graduation-cap"></i> <strong>Qual:</strong> PhD in Nuclear Physics</p>
+              <p><i class="fas fa-briefcase"></i> <strong>Exp:</strong> 12 Years</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Faculty 4 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="faculty-card">
+          <div class="faculty-img-container">
+            <img src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Faculty" class="faculty-img">
+          </div>
+          <div class="faculty-info">
+            <h4 class="faculty-name">Prof. John Nash</h4>
+            <span class="faculty-designation">Associate Professor</span>
+            
+            <div class="faculty-details">
+              <p><i class="fas fa-calculator"></i> <strong>Dept:</strong> Mathematics</p>
+              <p><i class="fas fa-graduation-cap"></i> <strong>Qual:</strong> MSc Mathematics</p>
+              <p><i class="fas fa-briefcase"></i> <strong>Exp:</strong> 8 Years</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Faculty 5 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="faculty-card">
+          <div class="faculty-img-container">
+            <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Faculty" class="faculty-img">
+          </div>
+          <div class="faculty-info">
+            <h4 class="faculty-name">Mr. Robert Smith</h4>
+            <span class="faculty-designation">Assistant Professor</span>
+            
+            <div class="faculty-details">
+              <p><i class="fas fa-chart-line"></i> <strong>Dept:</strong> Management (BBA)</p>
+              <p><i class="fas fa-graduation-cap"></i> <strong>Qual:</strong> MBA Finance</p>
+              <p><i class="fas fa-briefcase"></i> <strong>Exp:</strong> 6 Years</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Faculty 6 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="faculty-card">
+          <div class="faculty-img-container">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Faculty" class="faculty-img">
+          </div>
+          <div class="faculty-info">
+            <h4 class="faculty-name">Ms. Emily Davis</h4>
+            <span class="faculty-designation">Lecturer</span>
+            
+            <div class="faculty-details">
+              <p><i class="fas fa-palette"></i> <strong>Dept:</strong> Graphic Design</p>
+              <p><i class="fas fa-graduation-cap"></i> <strong>Qual:</strong> MFA Design</p>
+              <p><i class="fas fa-briefcase"></i> <strong>Exp:</strong> 4 Years</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<%- include("footer.ejs") %>

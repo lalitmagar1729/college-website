@@ -1,0 +1,521 @@
+<!-- Navbar -->
+<%- include("navbar.ejs") %>
+
+  <!-- HERO SECTION (Sample Content) -->
+  <section class="text-center bg-light mb-5 p-0 m-0">
+    <div class="container-fluid">
+      <img src="/images/hero.jpeg" alt="Hero Image" class="img-fluid rounded" style="width: 100%; height: 100vh;">
+    </div>
+  </section>
+
+  <section class="container about-section py-5">
+    <div class="row align-items-center gy-4">
+
+      <!-- Text -->
+      <div class="col-lg-6 col-md-12 about-content text-center text-lg-start px-4">
+        <h1 class="section-title">About Our College</h1>
+        <p>
+          Modern College is a premier educational institution dedicated to providing quality education and fostering
+          innovation. Established in 1995, we have been at the forefront of academic excellence.
+        </p>
+        <p>
+          Our campus provides state-of-the-art facilities, experienced faculty, and a vibrant learning environment.
+        </p>
+        <a href="/about" class="btn btn-primary about-btn">Learn More</a>
+      </div>
+
+      <!-- Image -->
+      <div class="col-lg-6 col-md-12 about-image text-center">
+        <img
+          src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          class="img-fluid" alt="College Campus">
+      </div>
+
+    </div>
+  </section>
+  
+  <!-- Courses Section -->
+  <section class="courses-section py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-title text-dark fw-bold">Our Courses</h2>
+          <p class="section-subtitle text-muted">
+            We offer a range of courses including diploma programs, bachelor's degrees, and master's degrees.
+          </p>
+        </div>
+      </div>
+      <div class="row gy-4 justify-content-center">
+        <!-- Diploma Card -->
+        <div class="col-lg-4 col-md-6">
+          <div class="course-card h-100">
+            <div class="card-icon diploma-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="card-header fw-semibold">Diploma Programs</div>
+            <div class="card-body">
+              <p class="card-text">
+                Practical, career-focused education designed to get you job-ready in a shorter time frame with industry-relevant skills.
+              </p>
+              <ul class="course-features list-unstyled">
+                <li><i class="fas fa-check-circle me-2 text-primary"></i> 1-2 year programs</li>
+                <li><i class="fas fa-check-circle me-2 text-primary"></i> Hands-on training</li>
+                <li><i class="fas fa-check-circle me-2 text-primary"></i> Industry certifications</li>
+                <li><i class="fas fa-check-circle me-2 text-primary"></i> Career placement support</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <a href="/diploma-courses" class="btn btn-view-more">Explore Diplomas</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bachelor Card -->
+        <div class="col-lg-4 col-md-6">
+          <div class="course-card h-100">
+            <div class="card-icon bachelor-icon">
+              <i class="fas fa-university"></i>
+            </div>
+            <div class="card-header fw-semibold">Bachelor's Degrees</div>
+            <div class="card-body">
+              <p class="card-text">
+                Comprehensive undergraduate programs combining theory with practical applications across diverse disciplines.
+              </p>
+              <ul class="course-features list-unstyled">
+                <li><i class="fas fa-check-circle me-2 text-primary"></i> 3-4 year programs</li>
+                <li><i class="fas fa-check-circle me-2 text-primary"></i> Research opportunities</li>
+                <li><i class="fas fa-check-circle me-2 text-primary"></i> Internship placements</li>
+                <li><i class="fas fa-check-circle me-2 text-primary"></i> Global study options</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <a href="/bachelor-courses" class="btn btn-view-more">Explore Bachelor's</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Master Card -->
+        <div class="col-lg-4 col-md-6">
+          <div class="course-card h-100">
+            <div class="card-icon master-icon">
+              <i class="fas fa-user-graduate"></i>
+            </div>
+            <div class="card-header fw-semibold">Master's Degrees</div>
+            <div class="card-body">
+              <p class="card-text">
+                Advanced postgraduate programs for specialization and leadership development in various fields.
+              </p>
+              <ul class="course-features list-unstyled">
+                <li><i class="fas fa-check-circle me-2 text-primary"></i> 1-2 year programs</li>
+                <li><i class="fas fa-check-circle me-2 text-primary"></i> Specialized concentrations</li>
+                <li><i class="fas fa-check-circle me-2 text-primary"></i> Thesis & research projects</li>
+                <li><i class="fas fa-check-circle me-2 text-primary"></i> Networking with experts</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <a href="/master-courses" class="btn btn-view-more">Explore Master's</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section Styles -->
+  <style>
+    :root {
+      --primary-color: #2563EB;
+      --secondary-color: #7C3AED;
+      --accent-color: #4cc9f0;
+      --light-bg: #f8f9fa;
+      --dark-text: #212529;
+      --light-text: #6c757d;
+      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --card-hover-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+      --transition: all 0.3s ease;
+    }
+
+    /* Custom CSS - Scoped to courses-section only */
+    .courses-section {
+      background-color: var(--light-bg);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark-text);
+}
+
+.courses-section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(67, 97, 238, 0.05) 0%, rgba(67, 97, 238, 0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.courses-section::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(76, 201, 240, 0.05) 0%, rgba(76, 201, 240, 0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.courses-section .section-title {
+  font-weight: 700;
+  color: var(--secondary-color);
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  z-index: 1;
+}
+
+.courses-section .section-title::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background: var(--accent-color);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.courses-section .section-subtitle {
+  color: var(--light-text);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+  z-index: 1;
+  position: relative;
+}
+
+.courses-section .course-card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  background: white;
+  position: relative;
+  z-index: 1;
+}
+
+.courses-section .course-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.courses-section .card-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px auto 20px;
+  font-size: 28px;
+  color: white;
+  transition: var(--transition);
+}
+
+.courses-section .diploma-icon {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+}
+
+.courses-section .bachelor-icon {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.courses-section .master-icon {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.courses-section .course-card:hover .card-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.courses-section .card-header {
+  background: transparent;
+  border: none;
+  padding: 0 20px 10px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--dark-text);
+  text-align: center;
+}
+
+.courses-section .card-body {
+  padding: 0 25px 15px;
+  text-align: center;
+}
+
+.courses-section .card-text {
+  color: var(--light-text);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+}
+
+.courses-section .course-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px;
+  text-align: left;
+}
+
+.courses-section .course-features li {
+  padding: 5px 0;
+  color: var(--light-text);
+  font-size: 0.9rem;
+  position: relative;
+  padding-left: 25px;
+}
+
+.courses-section .course-features li i {
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+
+.courses-section .card-footer {
+  background: transparent;
+  border: none;
+  padding: 0 25px 30px;
+  text-align: center;
+}
+
+.courses-section .btn-view-more {
+  background: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.courses-section .btn-view-more::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.7s;
+  z-index: -1;
+}
+
+.courses-section .btn-view-more:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+}
+
+.courses-section .btn-view-more:hover::before {
+  left: 100%;
+}
+
+.courses-section .courses-cta {
+  text-align: center;
+  margin-top: 70px;
+  z-index: 1;
+  position: relative;
+}
+
+.courses-section .btn-all-courses {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 12px 35px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.courses-section .btn-all-courses:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+}
+
+.courses-section .course-card:hover .card-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.course-card:hover{
+  transform: translateY(-10px);
+  box-shadow: var(--card-hover-shadow);
+}
+
+@media (max-width: 992px) {
+  .courses-section .course-card {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .courses-section .section-title {
+    font-size: 2rem;
+  }
+
+  .courses-section .section-subtitle {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+}
+  </style>
+
+  <!-- Achievements Section -->
+  <section class="achievements-section py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Our Achievements</h2>
+        <p class="section-subtitle text-muted">Numbers that speak louder than words</p>
+      </div>
+      <div class="row g-4">
+        <!-- Stat 1 -->
+        <div class="col-md-3 col-6">
+          <div class="stat-card h-100">
+            <div class="stat-icon-wrapper">
+              <i class="bi bi-briefcase-fill stat-icon"></i>
+            </div>
+            <div class="stat-number" data-target="95">0%</div>
+            <p class="stat-label">Placement Record Rate</p>
+          </div>
+        </div>
+        <!-- Stat 2 -->
+        <div class="col-md-3 col-6">
+          <div class="stat-card h-100">
+            <div class="stat-icon-wrapper">
+              <i class="bi bi-people-fill stat-icon"></i>
+            </div>
+            <div class="stat-number" data-target="1500">0+</div>
+            <p class="stat-label">Students Enrolled</p>
+          </div>
+        </div>
+        <!-- Stat 3 -->
+        <div class="col-md-3 col-6">
+          <div class="stat-card h-100">
+            <div class="stat-icon-wrapper">
+              <i class="bi bi-person-badge-fill stat-icon"></i>
+            </div>
+            <div class="stat-number" data-target="120">0+</div>
+            <p class="stat-label">Faculty Members</p>
+          </div>
+        </div>
+        <!-- Stat 4 -->
+        <div class="col-md-3 col-6">
+          <div class="stat-card h-100">
+            <div class="stat-icon-wrapper">
+              <i class="bi bi-award-fill stat-icon"></i>
+            </div>
+            <div class="stat-number" data-target="25">0+</div>
+            <p class="stat-label">Years of Excellence</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section Styles -->
+  <style>
+    .achievements-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+    .achievements-section .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #343a40;
+      margin-bottom: 0.5rem;
+    }
+    .achievements-section .section-subtitle {
+      font-size: 1.1rem;
+    }
+    .stat-card {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 2rem 1rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+    .stat-icon-wrapper {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+    .stat-icon {
+      font-size: 2rem;
+      color: #ffffff;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #343a40;
+      margin-bottom: 0.25rem;
+    }
+    .stat-label {
+      font-size: 1rem;
+      color: #6c757d;
+      margin: 0;
+    }
+    @media (max-width: 576px) {
+      .achievements-section .section-title {
+        font-size: 2rem;
+      }
+      .stat-number {
+        font-size: 2rem;
+      }
+      .stat-icon-wrapper {
+        width: 60px;
+        height: 60px;
+      }
+      .stat-icon {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+
+  <section class="courses-section py-5">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-3">🎓 Start Your Journey With Us</h2>
+      <p class="mb-4">
+        Admissions Open for UG & PG Courses | Limited Seats Available
+      </p>
+      <a href="#" class="btn btn-view-more px-5">
+        Enroll Now
+      </a>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <%- include("footer.ejs") %>

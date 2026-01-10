@@ -1,0 +1,341 @@
+<%- include("navbar.ejs") %>
+
+  <style>
+    .admission-hero {
+      background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(124, 58, 237, 0.8)), url('/images/hero1.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 0;
+      margin-bottom: 3rem;
+    }
+
+    .process-card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      height: 100%;
+      background: white;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(67, 97, 238, 0.15);
+    }
+
+    .process-number {
+      font-size: 4rem;
+      font-weight: 800;
+      color: rgba(37, 99, 235, 0.1);
+      position: absolute;
+      top: -10px;
+      right: 10px;
+      line-height: 1;
+    }
+
+    .req-list li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 30px;
+      list-style: none;
+    }
+
+    .req-list li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: #2563EB;
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+
+    .accordion-button:not(.collapsed) {
+      color: #2563EB;
+      background-color: rgba(37, 99, 235, 0.1);
+    }
+
+    .accordion-button:focus {
+      box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
+    }
+  </style>
+
+  <!-- Hero Section -->
+  <section class="admission-hero text-center">
+    <div class="container">
+      <h1 class="display-3 fw-bold mb-4">Admissions 2026</h1>
+      <p class="lead mb-4 fs-4">Your Future Starts Here. Join a community of innovators and leaders.</p>
+      <a href="#apply-now" class="btn btn-light btn-lg px-5 py-3 fw-bold text-primary rounded-pill shadow">Apply Now</a>
+    </div>
+  </section>
+
+  <!-- Admission Process Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title fw-bold">Admission Process</h2>
+        <p class="text-muted">Simple 4-step guide to join Vertex Global College</p>
+      </div>
+
+      <div class="row gy-4">
+        <!-- Step 1 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="process-card">
+            <span class="process-number">01</span>
+            <div class="mb-3">
+              <i class="fas fa-file-alt fa-3x text-primary"></i>
+            </div>
+            <h4 class="fw-bold mb-3">Application Form</h4>
+            <p class="text-muted">Candidates must fill out the online/offline admission application form available on
+              the college website or campus office.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="process-card">
+            <span class="process-number">02</span>
+            <div class="mb-3">
+              <i class="fas fa-check-circle fa-3x text-primary"></i>
+            </div>
+            <h4 class="fw-bold mb-3">Eligibility Check</h4>
+            <p class="text-muted">Applications are reviewed to ensure that candidates meet the eligibility criteria
+              prescribed by the university and college.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="process-card">
+            <span class="process-number">03</span>
+            <div class="mb-3">
+              <i class="fas fa-upload fa-3x text-primary"></i>
+            </div>
+            <h4 class="fw-bold mb-3">Document Verification</h4>
+            <p class="text-muted">Shortlisted candidates must submit original documents for verification, including
+              academic certificates and identity proof.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="process-card">
+            <span class="process-number">04</span>
+            <div class="mb-3">
+              <i class="fas fa-list-ol fa-3x text-primary"></i>
+            </div>
+            <h4 class="fw-bold mb-3">Merit List / Selection</h4>
+            <p class="text-muted">Admission is granted based on merit, entrance exam scores (if applicable), and
+              availability of seats. The merit list is published on the notice board and website.</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="row gy-4 justify-content-center mt-1">
+          <div class="col-md-6 col-lg-3">
+            <div class="process-card">
+              <span class="process-number">05</span>
+              <div class="mb-3">
+                <i class="fas fa-money-bill-wave fa-3x text-primary"></i>
+              </div>
+              <h4 class="fw-bold mb-3">Fee Payment</h4>
+              <p class="text-muted">Selected candidates must complete the admission fee payment within the given
+                timeline to confirm their seat.</p>
+            </div>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="process-card">
+              <span class="process-number">06</span>
+              <div class="mb-3">
+                <i class="fas fa-check-circle fa-3x text-primary"></i>
+              </div>
+              <h4 class="fw-bold mb-3">Admission Confirmation</h4>
+              <p class="text-muted">Admitted candidates receive an email confirmation with their seat number and further
+                instructions.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </section>
+
+  <!-- Eligibility & Requirements -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <img
+            src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Students" class="img-fluid rounded shadow-lg">
+        </div>
+        <div class="col-lg-6 ps-lg-5">
+          <h2 class="section-title fw-bold mb-4 text-center">Eligibility Criteria</h2>
+
+          <div class="mb-4">
+            <h5 class="fw-bold text-primary mb-3"><i class="fas fa-file-alt me-2"></i>Diploma's Course</h5>
+            <ul class="req-list">
+              <li>Minimum 65% aggregate in SSC or equivalent examination.</li>
+              <li>Proficiency in English language.</li>
+            </ul>
+          </div>
+
+          <div class="mb-4">
+            <h5 class="fw-bold text-primary mb-3"><i class="fas fa-graduation-cap me-2"></i>Degree's Course</h5>
+            <ul class="req-list">
+              <li>Minimum 60% aggregate in 10+2 or equivalent examination.</li>
+              <li>Valid score in college entrance test (if applicable).</li>
+            </ul>
+          </div>
+
+          <div class="mb-4">
+            <h5 class="fw-bold text-primary mb-3"><i class="fas fa-university me-2"></i>Master's Course</h5>
+            <ul class="req-list">
+              <li>Bachelor's degree in relevant field from a recognized university.</li>
+              <li>Minimum 55% aggregate marks in graduation.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action / Form -->
+  <section id="apply-now" class="py-5">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow border-0">
+            <div class="card-body p-5">
+              <div class="text-center mb-4">
+                <h3 class="fw-bold">Ready to Apply?</h3>
+                <p class="text-muted">Start your application today. It only takes a few minutes.</p>
+              </div>
+
+              <form>
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" placeholder="John Doe">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" placeholder="john@example.com">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Mobile Number</label>
+                    <input type="tel" class="form-control" placeholder="+1 234 567 890">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Highest Qualification</label>
+                    <select class="form-select">
+                      <option selected>Choose a qualification...</option>
+                      <option value="ssc">SSC</option>
+                      <option value="hsc">HSC</option>
+                      <option value="be">BE</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Course Applied For</label>
+
+                    <input type="text" list="courses" class="form-control" placeholder="Choose a course...">
+
+                    <datalist id="courses">
+                      <option value="Diploma of Electrical Engineering">
+                      <option value="Diploma of Computer Science">
+                      <option value="Diploma of Electronics and Communication">
+                      <option value="Diploma of Information Technology">
+                      <option value="BE of Information Technology">
+                      <option value="BE of Computer Science">
+                      <option value="BE of Electronics and Communication">
+                      <option value="BE of Artificial Intelligence and Machine Learning">
+                      <option value="BBA">
+                      <option value="MBA">
+                    </datalist>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label">Percentage/CGPA</label>
+                    <input type="text" class="form-control" placeholder="e.g., 85% or 8.5 CGPA">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Address</label>
+                    <textarea class="form-control" rows="3" placeholder="Your full address"></textarea>
+                  </div>
+                  <div class="col-12 mt-4">
+                    <button type="submit" class="btn btn-primary w-100 py-3 fw-bold">Submit Inquiry</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <!-- <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center fw-bold mb-5">Frequently Asked Questions</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="accordion shadow-sm" id="admissionFAQ">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  When is the last date for application?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#admissionFAQ">
+                <div class="accordion-body">
+                  The last date for Phase 1 applications is <strong>May 31st, 2026</strong>. Late applications may be
+                  considered based on seat availability.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq2">
+                  Is there an entrance exam?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#admissionFAQ">
+                <div class="accordion-body">
+                  Yes, for certain technical and management courses, candidates must appear for the Vertex Entrance Test
+                  (VET) or provide valid scores from national level exams like JEE, CAT, etc.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq3">
+                  Do you offer scholarships?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#admissionFAQ">
+                <div class="accordion-body">
+                  Yes, we offer merit-based scholarships up to 50% of the tuition fee for students with outstanding
+                  academic records or sports achievements.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <%- include("footer.ejs") %>
