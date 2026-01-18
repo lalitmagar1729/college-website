@@ -1,0 +1,42 @@
+<%- include("admin-topbar.ejs") %>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2>Edit About Vision Mission</h2>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-12">
+        <form action="/admin/update-about-vision-mission" method="post" class="card shadow-sm p-4">
+
+          <h5 class="mb-4 text-center">Update Vision & Mission</h5>
+
+          <div class="mb-3">
+            <label for="vision" class="form-label">Vision:</label>
+            <textarea class="form-control" id="vision" name="vision" rows="4" placeholder="Enter college vision"
+              required><%= aboutData[0].vision %></textarea>
+          </div>
+
+          <div class="mb-4">
+            <label for="mission" class="form-label">Mission</label>
+            <textarea class="form-control" id="mission" name="mission" rows="4" placeholder="Enter college mission"
+              required><%= aboutData[0].mission %></textarea>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-success px-4">
+              Update
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <%- include("admin-footer.ejs") %>

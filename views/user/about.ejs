@@ -1,205 +1,187 @@
 <%- include("navbar.ejs") %>
 
-<style>
-  .about-hero {
-    background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(124, 58, 237, 0.8)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 100px 0;
-    margin-bottom: 3rem;
-  }
+  <style>
+    .about-hero {
+      background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(124, 58, 237, 0.8));
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 0;
+      margin-bottom: 3rem;
+    }
 
-  .history-img {
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
+    .history-img {
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
 
-  .history-img:hover {
-    transform: scale(1.02);
-  }
+    .history-img:hover {
+      transform: scale(1.02);
+    }
 
-  .vision-mission-card {
-    border: none;
-    border-radius: 15px;
-    padding: 2.5rem;
-    height: 100%;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  }
+    .vision-mission-card {
+      border: none;
+      border-radius: 15px;
+      padding: 2.5rem;
+      height: 100%;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
 
-  .vision-card {
-    background: #fff;
-    border-left: 5px solid #2563EB;
-  }
+    .vision-card {
+      background: #fff;
+      border-left: 5px solid #2563EB;
+    }
 
-  .mission-card {
-    background: #fff;
-    border-left: 5px solid #7C3AED;
-  }
+    .mission-card {
+      background: #fff;
+      border-left: 5px solid #7C3AED;
+    }
 
-  .vision-mission-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(67, 97, 238, 0.15);
-  }
+    .vision-mission-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(67, 97, 238, 0.15);
+    }
 
-  .principal-section {
-    background-color: #f8f9fa;
-    position: relative;
-    overflow: hidden;
-  }
+    .principal-section {
+      background-color: #f8f9fa;
+      position: relative;
+      overflow: hidden;
+    }
 
-  .principal-img-container {
-    position: relative;
-    z-index: 1;
-  }
+    .principal-img-container {
+      position: relative;
+      z-index: 1;
+    }
 
-  .principal-img {
-    border-radius: 15px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-  }
+    .principal-img {
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
 
-  .quote-icon {
-    font-size: 3rem;
-    color: rgba(37, 99, 235, 0.2);
-    margin-bottom: 1rem;
-  }
+    .quote-icon {
+      font-size: 3rem;
+      color: rgba(37, 99, 235, 0.2);
+      margin-bottom: 1rem;
+    }
 
-  .affiliation-logo {
-    filter: grayscale(100%);
-    opacity: 0.7;
-    transition: all 0.3s ease;
-    max-height: 80px;
-    width: auto;
-  }
+    .affiliation-logo {
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      max-height: 80px;
+      width: auto;
+    }
 
-  .affiliation-logo:hover {
-    filter: grayscale(0%);
-    opacity: 1;
-    transform: scale(1.1);
-  }
-</style>
+    .affiliation-logo:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  </style>
 
-<!-- Hero Section -->
-<section class="about-hero text-center">
-  <div class="container">
-    <h1 class="display-3 fw-bold mb-4">About Vertex Global</h1>
-    <p class="lead mb-0 fs-4">Excellence in Education Since 1995</p>
-  </div>
-</section>
+  <section class="about-hero text-center">
+    <div class="container">
+      <h1 class="display-3 fw-bold mb-4">About Vertex Global</h1>
+    </div>
+  </section>
 
-<!-- History Section -->
-<section class="py-5">
-  <div class="container">
-    <div class="row align-items-center gy-5">
-      <div class="col-lg-6">
-        <h2 class="section-title fw-bold mb-4">Our History</h2>
-        <p class="text-muted lead">From a humble beginning to a world-class institution.</p>
-        <p>
-          Established in 1995, Vertex Global College began with a vision to make quality education accessible to all. 
-          Starting with just two departments and 50 students, we have grown into a premier institution with over 
-          10,000 students and 500+ distinguished faculty members.
-        </p>
-        <p>
-          Over the last three decades, we have consistently ranked among the top colleges in the region, 
-          known for our academic rigor, research contributions, and state-of-the-art infrastructure. 
-          Our journey is a testament to our commitment to nurturing the leaders of tomorrow.
-        </p>
-      </div>
-      <div class="col-lg-6">
-        <img src="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Old College Building" class="img-fluid history-img">
+  <section class="py-5">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-6">
+          <h2 class="section-title fw-bold mb-4"><%= aboutData[0].about_title %></h2>
+          <%- aboutData[0].about_desc %>
+        </div>
+        <div class="col-lg-6">
+          <img
+            src="images/<%= aboutData[0].about_image %>"
+            alt="Old College Building" class="img-fluid history-img">
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Vision & Mission -->
-<section class="py-5 bg-light">
-  <div class="container">
-    <div class="row gy-4">
-      <div class="col-md-6">
-        <div class="vision-mission-card vision-card">
-          <div class="icon mb-4">
-            <i class="fas fa-eye fa-3x text-primary"></i>
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-6">
+          <div class="vision-mission-card vision-card">
+            <div class="icon mb-4">
+              <i class="fas fa-eye fa-3x text-primary"></i>
+            </div>
+            <h3 class="fw-bold mb-3">Our Vision</h3>
+            <p class="text-muted fs-5">
+              <%= aboutData[0].vision %>
+            </p>
           </div>
-          <h3 class="fw-bold mb-3">Our Vision</h3>
-          <p class="text-muted fs-5">
-            "To be a global leader in education, fostering innovation, critical thinking, and ethical leadership to create a positive impact on society."
-          </p>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="vision-mission-card mission-card">
-          <div class="icon mb-4">
-            <i class="fas fa-bullseye fa-3x text-secondary"></i> 
-            <style> .text-custom-purple { color: #7C3AED; } </style>
+        <div class="col-md-6">
+          <div class="vision-mission-card mission-card">
+            <div class="icon mb-4">
+              <i class="fas fa-bullseye fa-3x text-secondary"></i>
+              <style>
+                .text-custom-purple {
+                  color: #7C3AED;
+                }
+              </style>
+            </div>
+            <h3 class="fw-bold mb-3">Our Mission</h3>
+            <p class="text-muted fs-5">
+              <%= aboutData[0].mission %>
+            </p>
           </div>
-          <h3 class="fw-bold mb-3">Our Mission</h3>
-          <p class="text-muted fs-5">
-            "To provide world-class education that empowers students to achieve their full potential, 
-            fostering a culture of research, innovation, and inclusivity."
-          </p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Principal's Message -->
-<section class="principal-section py-5">
-  <div class="container">
-    <div class="row align-items-center gy-5">
-      <div class="col-lg-5 order-lg-2">
-        <div class="principal-img-container text-center">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Principal" class="img-fluid principal-img w-75">
+  <section class="principal-section py-5">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-5 order-lg-2">
+          <div class="principal-img-container text-center">
+            <img src="images/<%= aboutData[0].principal_image %>" alt="<%= aboutData[0].principal_name %>"
+              class="img-fluid principal-img w-75">
+          </div>
+        </div>
+        <div class="col-lg-7 order-lg-1">
+          <h2 class="section-title fw-bold mb-4">Principal's Message</h2>
+          <i class="fas fa-quote-left quote-icon"></i>
+          <blockquote class="blockquote">
+            <p class="mb-4 fs-5" style="line-height: 1.8;">
+              <%= aboutData[0].principal_msg %>
+            </p>
+            <footer class="blockquote-footer mt-2">
+              <strong class="text-dark fs-5">
+                <%= aboutData[0].principal_name %>
+              </strong>
+              <br>
+              <cite title="Source Title">Principal, <%= generalData[0].college_name %></cite>
+            </footer>
+          </blockquote>
         </div>
       </div>
-      <div class="col-lg-7 order-lg-1">
-        <h2 class="section-title fw-bold mb-4">Principal's Message</h2>
-        <i class="fas fa-quote-left quote-icon"></i>
-        <blockquote class="blockquote">
-          <p class="mb-4 fs-5" style="line-height: 1.8;">
-            "Welcome to Vertex Global College. We believe that education is not just about filling a bucket, but lighting a fire. 
-            Our aim is to provide an environment where students can explore their potential, challenge the status quo, and dream big. 
-            We are committed to academic excellence and holistic development, ensuring that every student who walks through our gates 
-            leaves as a confident, capable, and compassionate individual ready to change the world."
-          </p>
-          <footer class="blockquote-footer mt-2">
-            <strong class="text-dark fs-5">Dr. Sarah Johnson</strong> 
-            <br>
-            <cite title="Source Title">Principal, Vertex Global College</cite>
-          </footer>
-        </blockquote>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container text-center">
+      <h2 class="section-title fw-bold mb-5">Accreditations & Affiliations</h2>
+      <div class="row align-items-center justify-content-center gy-4 grayscale-logos">
+
+        <% for(var i=0 ; i<accreditationData.length ; i++) { %>
+          <div class="col-6 col-md-3">
+            <i class="<%= accreditationData[i].accreditation_icon %> fa-4x text-muted affiliation-logo"></i>
+            <p class="mt-2 text-muted small">
+              <%= accreditationData[i].accreditation_title %>
+            </p>
+          </div>
+          <% } %>
+
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Accreditation & Affiliations -->
-<section class="py-5">
-  <div class="container text-center">
-    <h2 class="section-title fw-bold mb-5">Accreditations & Affiliations</h2>
-    <div class="row align-items-center justify-content-center gy-4 grayscale-logos">
-      <!-- Using Font Awesome icons as placeholders for Logos since I don't have real logo URLs -->
-      <div class="col-6 col-md-3">
-        <i class="fas fa-university fa-4x text-muted affiliation-logo"></i>
-        <p class="mt-2 text-muted small">UGC Recognized</p>
-      </div>
-      <div class="col-6 col-md-3">
-        <i class="fas fa-award fa-4x text-muted affiliation-logo"></i>
-        <p class="mt-2 text-muted small">NAAC 'A++' Grade</p>
-      </div>
-      <div class="col-6 col-md-3">
-        <i class="fas fa-globe-americas fa-4x text-muted affiliation-logo"></i>
-        <p class="mt-2 text-muted small">AICTE Approved</p>
-      </div>
-      <div class="col-6 col-md-3">
-        <i class="fas fa-certificate fa-4x text-muted affiliation-logo"></i>
-        <p class="mt-2 text-muted small">ISO 9001:2015</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<%- include("footer.ejs") %>
+  <%- include("footer.ejs") %>

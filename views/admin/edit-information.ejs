@@ -1,0 +1,73 @@
+<%- include("admin-topbar.ejs") %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center">Edit General Info</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+          <div class="col-12 mt-4">
+      
+      <form action="/admin/update-information" method="post" enctype="multipart/form-data">
+        <div class="row">
+          <input type="hidden" name="info_id" value="<%= infoData[0].info_id %>">
+          <div class="col-md-6 mb-3">
+            <label for="collegeName" class="form-label">College Name</label>
+            <input type="text" name="college_name" class="form-control" id="collegeName" value="<%= infoData[0].college_name %>" placeholder="Enter college name" required>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="collegeImage" class="form-label">College Image</label>
+            <input type="file" name="college_image" class="form-control" id="collegeImage" value="<%= infoData[0].college_image %>" placeholder="Upload college image">
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="collegeContact" class="form-label">College Contact</label>
+            <input type="number" name="college_phone" pattern="[0-9]{10}" class="form-control" id="collegeContact" value="<%= infoData[0].college_phone %>" placeholder="Enter college contact" required>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="collegeEmail" class="form-label">College Email</label>
+            <input type="email" name="college_email" class="form-control" id="collegeEmail" value="<%= infoData[0].college_email %>" placeholder="Enter college Email" required>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="collegeAddress" class="form-label">College Address</label>
+            <input type="text" name="college_address" class="form-control" id="collegeAddress" value="<%= infoData[0].college_address %>" placeholder="Enter college address" required>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="collegeMap" class="form-label">College Map</label>
+            <input type="text" name="college_map" class="form-control" id="collegeMap" value="<%= infoData[0].college_map %>" placeholder="Enter college map" required>
+            <small class="form-text text-muted">Enter the map link (Embedded) of the college</small>
+          </div>
+
+          <div class="col-4 mb-3">
+            <label for="collegeFacebook" class="form-label">College Facebook Link</label>
+            <input type="text" name="college_facebook" class="form-control" id="collegeFacebook" value="<%= infoData[0].college_facebook %>" placeholder="Enter college Facebook link" required>
+          </div>
+
+          <div class="col-4 mb-3">
+            <label for="collegeInstagram" class="form-label">College Instagram Link</label>
+            <input type="text" name="college_instagram" class="form-control" id="collegeInstagram" value="<%= infoData[0].college_instagram %>" placeholder="Enter college Instagram link" required>
+          </div>
+
+          <div class="col-4 mb-3">
+            <label for="collegeYoutube" class="form-label">College Youtube Link</label>
+            <input type="text" name="college_youtube" class="form-control" id="collegeYoutube" value="<%= infoData[0].college_youtube %>" placeholder="Enter college Youtube link" required>
+          </div>
+        </div>
+
+        <div class="col-12 mt-3 text-center">
+          <button type="submit" class="btn btn-success">Update Info</button>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+<%- include("admin-footer.ejs") %>

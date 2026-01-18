@@ -1,0 +1,41 @@
+<%- include("admin-topbar.ejs") %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center">Enquiry List</h2>
+    </div>
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(typeof enquiryData !== "undefined") { %>
+            <% for(let i = 0; i < enquiryData.length; i++) { %>
+              <tr>
+                <td><%= i + 1 %></td>
+                <td><%= enquiryData[i].fullname %></td>
+                <td><%= enquiryData[i].email %></td>
+                <td><%= enquiryData[i].message %></td>
+                <td><%= enquiryData[i].created_at.toLocaleDateString() + " " + enquiryData[i].created_at.toLocaleTimeString() %></td> 
+              </tr>
+            <% } %>
+          <% }else { %>
+            <tr>
+              <td colspan="5">No enquiry found.</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include("admin-footer.ejs") %>

@@ -16,14 +16,20 @@ router.get("/courses", userController.getCourses);
 // Admissions
 router.get("/admissions", userController.getAdmissions);
 
+// Save Admissions
+router.post("/save-admissions", userController.postSaveAdmissions);
+
 // Faculty
 router.get("/faculty", userController.getFaculty);
 
-// College Life
-router.get("/collegelife", userController.getCollegeLife);
+// Facilities
+router.get("/facilities", userController.getFacilities);
 
 // Contact
 router.get("/contact", userController.getContact);
+
+// Enquiry
+router.post("/enquiry", userController.postEnquiry);
 
 
 

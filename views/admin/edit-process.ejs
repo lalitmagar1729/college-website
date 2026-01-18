@@ -1,0 +1,64 @@
+<%- include("admin-topbar.ejs") %>
+
+  <div class="container-fluid py-4">
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <h2 class="fw-bold">Edit Process</h2>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <form action="/admin/update-process" method="post" class="card p-4">
+          
+          <input type="hidden" name="step_id" value="<%= stepsData[0].step_id %>">
+
+          <div class="mb-3">
+            <label for="step_title" class="form-label">Step Title</label>
+            <input type="text" class="form-control" id="step_title" name="step_title"
+              value="<%= stepsData[0].step_title %>" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="step_icon" class="form-label">Step Icon</label>
+            <select name="step_icon" id="step_icon" class="form-control" required>
+              <option value="">--Select step icon--</option>
+
+              <option value="fas fa-file-alt" <%=stepsData[0].step_icon==='fas fa-file-alt' ? 'selected' : '' %>>
+                File & Form
+              </option>
+
+              <option value="fas fa-check-circle" <%=stepsData[0].step_icon==='fas fa-check-circle' ? 'selected' : '' %>
+                >
+                Check
+              </option>
+
+              <option value="fas fa-list-ol" <%=stepsData[0].step_icon==='fas fa-list-ol' ? 'selected' : '' %>>
+                Merit
+              </option>
+
+              <option value="fas fa-money-bill-wave" <%=stepsData[0].step_icon==='fas fa-money-bill-wave' ? 'selected'
+                : '' %>>
+                Payment & Confirmation
+              </option>
+            </select>
+          </div>
+
+
+          <div class="mb-4">
+            <label for="step_description" class="form-label">Step Description</label>
+            <textarea class="form-control" id="step_description" name="step_description" rows="3"
+              required><%= stepsData[0].step_description %></textarea>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-success px-4">
+              Update Process
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <%- include("admin-footer.ejs") %>

@@ -1,0 +1,279 @@
+<%- include("admin-topbar.ejs") %>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center mb-4">Add New Course</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <form action="/admin/save-courses" method="post" autocomplete="off">
+
+          <div class="mb-4">
+            <label class="form-label">Select Course Level *</label>
+            <select class="form-select" name="course_level" id="course_level" required>
+              <option value="">-- Choose Level --</option>
+              <option value="Diploma">Diploma</option>
+              <option value="Undergraduate">Undergraduate</option>
+              <option value="Postgraduate">Postgraduate</option>
+            </select>
+          </div>
+
+          <div class="mb-4" id="courseTypeContainer" style="display:none;">
+            <label class="form-label">Select Course Type *</label>
+            <select class="form-select" name="course_type" id="course_type">
+              <option value="">-- Select Type --</option>
+            </select>
+          </div>
+
+          <div class="mb-4" id="courseNameContainer" style="display:none;">
+            <label class="form-label">Course Name *</label>
+            <input type="text" class="form-control" name="course_name" id="course_name">
+          </div>
+
+          <div class="d-flex justify-content-end gap-3 mt-4">
+            <button type="reset" class="btn btn-outline-secondary">Clear</button>
+            <button type="submit" class="btn btn-primary px-4">Save Course</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-12">
+        <div class="card shadow">
+          <div class="card-body">
+            <h2 class="text-center mb-4">Courses List</h2>
+
+            <table class="table table-bordered table-hovere">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Level</th>
+                  <th>Program Type</th>
+                  <th>Course Name</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if(typeof coursesData != "undefined" && coursesData.length > 0) { %>
+                <% for(var i=0; i<coursesData.length; i++) { %>
+                <tr>
+                  <td><%= i+1 %></td>
+                  <td><%= coursesData[i].course_level %></td>
+                  <td><%= coursesData[i].course_type %></td>
+                  <td><%= coursesData[i].course_name %></td>
+                  <td>
+                    <a href="/admin/edit-courses/<%= coursesData[i].course_id %>" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></a>
+                    <a href="/admin/delete-courses/<%= coursesData[i].course_id %>" onclick="return confirm('Are you sure you want to delete this course?')" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
+                  </td>
+                </tr>
+                <% } %>
+                <% } else { %>
+                <tr>
+                  <td colspan="5" class="text-center">No Courses Found</td>
+                </tr>
+                <% } %>
+              </tbody>
+
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    
+// Courses
+
+document.addEventListener("DOMContentLoaded", function () {
+  // DOM Elements
+  const courseLevel = document.getElementById("course_level");
+  const courseTypeContainer = document.getElementById("courseTypeContainer");
+  const courseType = document.getElementById("course_type");
+  const courseNameContainer = document.getElementById("courseNameContainer");
+  const courseName = document.getElementById("course_name");
+  const courseForm = document.getElementById("courseForm");
+  const resetBtn = document.getElementById("resetBtn");
+
+  // Course type options for all levels
+  const courseTypeOptions = {
+    Diploma: [{ value: "Diploma", text: "Diploma" }],
+    Undergraduate: [
+      {
+        value: "Bachelor of Engineering (B.E.)",
+        text: "Bachelor of Engineering (B.E.)",
+      },
+      { value: "Bachelor's Degree", text: "Bachelor's Degree" },
+    ],
+    Postgraduate: [
+      {
+        value: "Master of Engineering (M.E.)",
+        text: "Master of Engineering (M.E.)",
+      },
+      { value: "Master's Degree", text: "Master's Degree" },
+    ],
+  };
+
+  // Course level change handler
+  courseLevel.addEventListener("change", handleCourseLevelChange);
+
+  // Course type change handler
+  courseType.addEventListener("change", handleCourseTypeChange);
+
+  // Reset button handler
+  resetBtn.addEventListener("click", resetForm);
+
+  // Form submission handler
+  courseForm.addEventListener("submit", handleFormSubmit);
+
+  // Functions
+  function handleCourseLevelChange() {
+    const selectedLevel = this.value;
+
+    // Reset and hide dynamic fields
+    courseTypeContainer.style.display = "none";
+    courseNameContainer.style.display = "none";
+    courseType.innerHTML = '<option value="">-- Select Type --</option>';
+    courseName.value = "";
+    courseName.placeholder = "";
+
+    if (selectedLevel) {
+      // Show course type for all levels
+      showCourseTypeField(selectedLevel);
+
+      // Show course name field
+      courseNameContainer.style.display = "block";
+
+      // Set initial placeholder based on level
+      if (selectedLevel === "Diploma") {
+        courseName.placeholder = "Enter diploma course name";
+      } else {
+        courseName.placeholder = `Enter ${selectedLevel.toLowerCase()} course name`;
+      }
+    }
+  }
+
+  function handleCourseTypeChange() {
+    const selectedType = this.value;
+    const selectedLevel = courseLevel.value;
+
+    // Update placeholder based on both level and type
+    if (selectedLevel === "Diploma") {
+      if (selectedType === "Diploma") {
+        courseName.placeholder =
+          "Enter diploma program (e.g., Computer Engineering, Mechanical Engineering)";
+      } else if (selectedType === "Advanced Diploma") {
+        courseName.placeholder = "Enter advanced diploma program";
+      } else if (selectedType === "Post Graduate Diploma") {
+        courseName.placeholder =
+          "Enter post graduate diploma program (e.g., PG Diploma in Management)";
+      } else if (selectedType === "Diploma Certification") {
+        courseName.placeholder = "Enter diploma certification program";
+      }
+    } else if (selectedLevel === "Undergraduate") {
+      if (selectedType === "Bachelor of Engineering (B.E.)") {
+        courseName.placeholder =
+          "Enter BE specialization (e.g., Computer Engineering, Cyber Security)";
+      } else if (selectedType === "Bachelor's Degree") {
+        courseName.placeholder =
+          "Enter bachelor's degree (e.g., B.Sc. Computer Science, BCA, BBA)";
+      }
+    } else if (selectedLevel === "Postgraduate") {
+      if (selectedType === "Master of Engineering (M.E.)") {
+        courseName.placeholder =
+          "Enter ME specialization (e.g., Computer Engineering, Cyber Security)";
+      } else if (selectedType === "Master's Degree") {
+        courseName.placeholder =
+          "Enter master's degree (e.g., MCA, M.Sc., MBA)";
+      }
+    }
+  }
+
+  function showCourseTypeField(level) {
+    courseTypeContainer.style.display = "block";
+
+    // Clear existing options
+    courseType.innerHTML = '<option value="">-- Select Type --</option>';
+
+    // Populate options based on level
+    if (courseTypeOptions[level]) {
+      courseTypeOptions[level].forEach((option) => {
+        const optElement = document.createElement("option");
+        optElement.value = option.value;
+        optElement.textContent = option.text;
+        courseType.appendChild(optElement);
+      });
+    }
+  }
+
+  function resetForm() {
+    // Hide dynamic fields
+    courseTypeContainer.style.display = "none";
+    courseNameContainer.style.display = "none";
+
+    // Reset form values
+    courseForm.reset();
+    courseType.innerHTML = '<option value="">-- Select Type --</option>';
+    courseName.placeholder = "";
+    courseLevel.focus();
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+
+    const selectedLevel = courseLevel.value;
+    const selectedType = courseType.value;
+    const enteredName = courseName.value.trim();
+
+    // Validation
+    if (!selectedLevel) {
+      alert("Please select a course level");
+      courseLevel.focus();
+      return;
+    }
+
+    if (!selectedType) {
+      alert("Please select a course type");
+      courseType.focus();
+      return;
+    }
+
+    if (!enteredName) {
+      alert("Please enter a course name");
+      courseName.focus();
+      return;
+    }
+
+    // Prepare data for submission
+    const formData = {
+      course_level: selectedLevel,
+      program_type: selectedType,
+      course_name: enteredName,
+      course_status: "Active", // Default value as per your table
+    };
+
+    // Display success message
+    alert(
+      `Course saved successfully!\n\nLevel: ${formData.course_level}\nType: ${formData.program_type}\nName: ${formData.course_name}`
+    );
+
+    // Reset form after successful submission
+    resetForm();
+  }
+});
+
+  </script>
+
+
+
+
+
+  <%- include("admin-footer.ejs") %>

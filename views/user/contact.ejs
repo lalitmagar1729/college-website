@@ -13,21 +13,21 @@
     <div class="col-lg-6">
       <div class="contact-card p-4">
         <h5 class="fw-semibold mb-3">Contact Form</h5>
-        <form action="/contact" method="post">
+        <form action="/enquiry" method="post">
 
           <div class="mb-3">
             <label class="form-label">Full Name</label>
-            <input type="text" class="form-control" placeholder="Enter your name">
+            <input type="text" name="fullname" class="form-control" placeholder="Enter your name" required>
           </div>
 
           <div class="mb-3">
             <label class="form-label">Email Address</label>
-            <input type="email" class="form-control" placeholder="Enter your email">
+            <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
           </div>
 
           <div class="mb-3">
             <label class="form-label">Message</label>
-            <textarea class="form-control" rows="8" placeholder="Write your message"></textarea>
+            <textarea name="message" class="form-control" rows="8" placeholder="Write your message" required></textarea>
           </div>
 
           <button class="btn btn-primary w-100">
@@ -37,7 +37,6 @@
       </div>
     </div>
 
-    <!-- Contact Details -->
     <div class="col-lg-6">
       <div class="contact-card p-4 mb-4">
         <h5 class="fw-semibold mb-4">College Information</h5>
@@ -48,7 +47,7 @@
           </div>
           <div>
             <h6 class="mb-1">Address</h6>
-            <p class="text-muted mb-0">XYZ College, Pune, Maharashtra, India</p>
+            <p class="text-muted mb-0"><%= generalData.college_address %></p>
           </div>
         </div>
 
@@ -58,7 +57,7 @@
           </div>
           <div>
             <h6 class="mb-1">Phone</h6>
-            <p class="text-muted mb-0">+91 98765 43210</p>
+            <p class="text-muted mb-0"><%= generalData.college_phone %></p>
           </div>
         </div>
 
@@ -68,7 +67,7 @@
           </div>
           <div>
             <h6 class="mb-1">Email</h6>
-            <p class="text-muted mb-0">info@college.edu</p>
+            <p class="text-muted mb-0"><%= generalData.college_email %></p>
           </div>
         </div>
       </div>

@@ -1,0 +1,57 @@
+<%- include("admin-topbar.ejs") %>
+
+  <div class="container-fluid py-4">
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <h2 class="fw-bold">Edit Achievement</h2>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form action="/admin/update-achievement" method="POST">
+          <input type="hidden" name="achievement_id" value="<%= achievementData[0].achievement_id %>">
+
+          <div class="mb-3">
+            <label class="form-label">Achievement Title</label>
+            <input type="text" class="form-control" name="achievement_title"
+              value="<%= achievementData[0].achievement_title %>" placeholder="Enter Achievement Title" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Achievement Counter</label>
+            <input type="text" class="form-control" name="achievement_counter"
+              value="<%= achievementData[0].achievement_counter %>" placeholder="Enter Achievement Counter" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Achievement Icon</label>
+            <select class="form-select" name="achievement_icon" required>
+              <option value="bi-briefcase-fill" <%=achievementData[0].achievement_icon==='bi-briefcase-fill'
+                ? 'selected' : '' %>>Placements</option>
+
+              <option value="bi-people-fill" <%=achievementData[0].achievement_icon==='bi-people-fill' ? 'selected' : ''
+                %>>
+                Students
+              </option>
+
+              <option value="bi-person-badge" <%=achievementData[0].achievement_icon==='bi-person-badge' ? 'selected'
+                : '' %>>Faculty</option>
+
+              <option value="bi-award-fill" <%=achievementData[0].achievement_icon==='bi-award-fill' ? 'selected' : ''
+                %>>Experiences</option>
+            </select>
+          </div>
+
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary px-4">
+              Update Achievement
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <%- include("admin-footer.ejs") %>

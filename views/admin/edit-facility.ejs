@@ -1,0 +1,49 @@
+<%- include("admin-topbar.ejs") %>
+
+  <div class="container-fluid py-4">
+
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <h3 class="fw-bold">Edit Facility</h3>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-12">
+        <form action="/admin/update-facility" method="post" enctype="multipart/form-data" class="card shadow-sm p-4">
+
+          <input type="hidden" name="facility_id" value="<%= facilityData[0].facility_id %>">
+
+          <div class="mb-3">
+            <label for="facility_title" class="form-label">Facility Title</label>
+            <input type="text" class="form-control" id="facility_title" name="facility_title"
+              value="<%= facilityData[0].facility_title %>" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="facility_photo" class="form-label">Facility Photo</label>
+            <input type="file" class="form-control" id="facility_photo" name="facility_photo">
+          </div>
+
+          <div class="mb-4">
+            <label for="facility_desc" class="form-label">Facility Description</label>
+            <textarea class="form-control" id="facility_desc" name="facility_desc" rows="3"
+              required><%= facilityData[0].facility_desc %></textarea>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-success px-4">
+              Update Facility
+            </button>
+            <a href="/admin/facilities" class="btn btn-danger px-4">
+              Cancel
+            </a>
+            </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <%- include("admin-footer.ejs") %>

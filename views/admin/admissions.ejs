@@ -1,0 +1,104 @@
+<%- include("admin-topbar.ejs") %>
+
+<div class="container-fluid">
+
+  <!-- Header -->
+  <div class="row mb-3">
+    <div class="col-12 d-flex align-items-center justify-content-between">
+      <h2 class="mb-0">Admission List</h2>
+
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        onclick="printAdmissions()"
+      >
+        Print <i class="fas fa-print ms-2"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="row">
+    <div class="col-12 print-area">
+      <table class="table table-bordered table-hover table-striped align-middle">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Qualification</th>
+            <th>Course</th>
+            <th>CGPA</th>
+            <th>Address</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% if (admissionlist && admissionlist.length > 0) { %>
+            <% admissionlist.forEach((item, index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= item.applicant_full_name %></td>
+                <td><%= item.applicant_email %></td>
+                <td><%= item.applicant_mobile %></td>
+                <td><%= item.highest_qualification.toUpperCase() %></td>
+                <td><%= item.course_applied_for %></td>
+                <td><%= item.academic_score %></td>
+                <td><%= item.applicant_address %></td>
+                <td><%= item.submitted_at.toLocaleDateString() %></td>
+              </tr>
+            <% }) %>
+          <% } else { %>
+            <tr>
+              <td colspan="9" class="text-center text-muted">
+                No Admissions Found
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Print Script -->
+<script>
+  function printAdmissions() {
+    const printArea = document.querySelector(".print-area").innerHTML;
+
+    const printWindow = window.open("", "_blank", "width=1200,height=700");
+
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Admissions List</title>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          />
+          <style>
+            body {
+              padding: 20px;
+            }
+            table {
+              font-size: 14px;
+            }
+          </style>
+        </head>
+        <body>
+          <h3 class="text-center mb-4">Admissions List</h3>
+          ${printArea}
+        </body>
+      </html>
+    `);
+
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+    printWindow.close();
+  }
+</script>
+
+<%- include("admin-footer.ejs") %>

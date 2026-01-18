@@ -1,0 +1,128 @@
+<%- include('admin-topbar.ejs') %>
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2>Edit About</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (aboutData && aboutData.length> 0) { %>
+
+                <% for(let i=0; i<aboutData.length; i++) { %>
+                  <tr>
+                    <td>
+                      <img src="/images/<%= aboutData[i].about_image %>" alt="About Image"
+                        style="width: 100px; height: auto;">
+                    </td>
+                    <td>
+                      <%= aboutData[i].about_title %>
+                    </td>
+                    <td><%- aboutData[i].about_desc.length> 100 ? aboutData[i].about_desc.substring(0, 100) + '...' :
+                        aboutData[i].about_desc %></td>
+                    <td>
+                      <a href="/admin/edit-about" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
+                    </td>
+                  </tr>
+                  <% } %>
+                    <% } else { %>
+                      <tr>
+                        <td colspan="4" class="text-center">No About Data Available</td>
+                      </tr>
+                      <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-12">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr class="text-center">
+                <th>Vision</th>
+                <th>Mission</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (aboutData && aboutData.length> 0) { %>
+                <% for(let i=0; i<aboutData.length; i++) { %>
+                  <tr>
+                    <td>
+                      <%= aboutData[i].vision %>
+                    </td>
+                    <td>
+                      <%= aboutData[i].mission %>
+                    </td>
+                    <td>
+                      <a href="/admin/edit-about-vision-mission" class="btn btn-warning"><i
+                          class="bi bi-pencil"></i></a>
+                    </td>
+                  </tr>
+                  <% } %>
+                    <% } else { %>
+                      <tr>
+                        <td colspan="3" class="text-center">No Vision-Mission Data Available</td>
+                      </tr>
+                      <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-12">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th style="width: 20%;">Principal Name</th>
+                <th style="width: 20%;">Principal Image</th>
+                <th style="width: 60%;">Principal Message</th>
+                <th style="width: 10%;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (aboutData && aboutData.length> 0) { %>
+                <% for(let i=0; i<aboutData.length; i++) { %>
+                  <tr>
+                    <td>
+                      <%= aboutData[i].principal_name %>
+                    </td>
+                    <td>
+                      <img src="/images/<%= aboutData[i].principal_image %>" alt="Principal Image"
+                        style="max-width: 100px; height: auto;">
+                    </td>
+                    <td>
+                      <%= aboutData[i].principal_msg %>
+                    </td>
+                    <td>
+                      <a href="/admin/edit-about-principal" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
+                    </td>
+                  </tr>
+                  <% } %>
+                    <% } else { %>
+                      <tr>
+                        <td colspan="4" class="text-center">No Principal Data Available</td>
+                      </tr>
+                      <% } %>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <%- include('admin-footer.ejs') %>

@@ -1,0 +1,435 @@
+<%- include("navbar.ejs") %>
+
+    <style>
+       
+        :root {
+            --primary-color: #2563EB;
+            --secondary-color: #7C3AED;
+            --accent-color: #4cc9f0;
+            --light-bg: #f8f9fa;
+            --dark-text: #212529;
+            --light-text: #6c757d;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --card-hover-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        .page-header {
+            background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(124, 58, 237, 0.8));
+
+            padding: 80px 0;
+            margin-bottom: 50px;
+        }
+
+        .page-title {
+            color: var(--primary-color);
+            color: white;
+            font-weight: 800;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            display: inline-block;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 4px;
+            background: var(--accent-color);
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .course-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            background: white;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .program-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .program-list li {
+            padding: 15px 25px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .program-list li:last-child {
+            border-bottom: none;
+        }
+
+        .program-list li:hover {
+            background-color: rgba(37, 99, 235, 0.05);
+            color: var(--primary-color);
+            padding-left: 30px;
+        }
+
+        .program-list li i {
+            margin-right: 15px;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        .diploma-card {
+            text-align: center;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .diploma-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(37, 117, 252, 0.3);
+        }
+
+        .ug-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+        }
+
+        .pg-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 25px;
+        }
+
+        .card-header-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+    </style>
+
+    <!-- Header -->
+    <div class="page-header text-center">
+        <div class="container text-white">
+            <h1 class="page-title display-3">Courses Offered</h1>
+            <p class="lead text-muted mx-auto" style="max-width: 600px;">Explore our comprehensive range of academic
+                programs designed to empower your future career.</p>
+        </div>
+    </div>
+
+    <div class="container mb-5 pb-5">
+
+        <!-- Diploma Programs -->
+        <div class="mb-5 pb-4">
+            <h3 class="section-title">🎓 Diploma Programs <span class="ms-2 text-dark">(3 Years)</span></h3>
+            <div class="row g-4">
+
+                <% const icons=[ "fas fa-laptop-code" , "fas fa-lightbulb" , "fas fa-city" , "fas fa-tools" ]; let
+                    iconIndex=0; %>
+
+                    <% coursesData.forEach(course=> { %>
+                        <% if (course.course_type==="Diploma" ) { %>
+
+                            <div class="col-md-6 col-lg-3">
+                                <div class="course-card diploma-card">
+                                    <div class="diploma-icon">
+                                        <i class="<%= icons[iconIndex % icons.length] %>"></i>
+                                    </div>
+
+                                    <h5 class="card-title fw-bold m-0">
+                                        <a href="javascript:void(0)" class="text-decoration-none"
+                                            onclick="openAdmissionModal()">
+                                            <%= course.course_name %>
+                                        </a>
+                                    </h5>
+                                </div>
+                            </div>
+
+                            <% iconIndex++; %>
+                                <% } %>
+                                    <% }) %>
+
+            </div>
+        </div>
+
+
+        <!-- Undergraduate Programs -->
+        <div class="mb-5 pb-4">
+            <h3 class="section-title">🎓 Undergraduate Programs</h3>
+            <div class="row g-4">
+
+                <div class="col-lg-6">
+                    <div class="course-card">
+                        <div class="ug-header">
+                            <h4 class="m-0 card-header-title">
+                                <i class="fas fa-laptop-code me-3"></i>
+                                Bachelor of Engineering (B.E.)
+                                <span class="ms-3">(4 Years)</span>
+                            </h4>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <ul class="program-list">
+                                <% coursesData.forEach(course=> { %>
+                                    <% if (course.course_type==="Bachelor of Engineering (B.E.)" ) { %>
+                                        <li>
+                                            <i class="fas fa-arrow-right"></i>
+                                            <a href="javascript:void(0)" class="text-decoration-none"
+                                                onclick="openAdmissionModal()">
+                                                <%= course.course_name %>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                                            <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="course-card">
+                        <div class="ug-header">
+                            <h4 class="m-0 card-header-title">
+                                <i class="fas fa-user-graduate me-3"></i>
+                                Bachelor’s Degree
+                                <span class="ms-3">(3 Years)</span>
+                            </h4>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <ul class="program-list">
+                                <% coursesData.forEach(course=> { %>
+                                    <% if (course.course_type==="Bachelor's Degree" ) { %>
+                                        <li>
+                                            <i class="fas fa-arrow-right"></i>
+                                            <a href="javascript:void(0)" class="text-decoration-none"
+                                                onclick="openAdmissionModal()">
+                                                <%= course.course_name %>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                                            <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- Postgraduate Programs -->
+        <div class="mb-5">
+            <h3 class="section-title">🎓 Postgraduate Programs</h3>
+            <div class="row g-4">
+
+                <div class="col-lg-6">
+                    <div class="course-card">
+                        <div class="pg-header">
+                            <h4 class="m-0 card-header-title">
+                                <i class="fas fa-microchip me-3"></i>
+                                Master of Engineering (M.E.)
+                                <span class="ms-3">(3 Years)</span>
+                            </h4>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <ul class="program-list">
+                                <% coursesData.forEach(course=> { %>
+                                    <% if (course.course_type==="Master of Engineering (M.E.)" ) { %>
+                                        <li>
+                                            <i class="fas fa-arrow-right"></i>
+                                            <a href="javascript:void(0)" class="text-decoration-none"
+                                                onclick="openAdmissionModal()">
+                                                <%= course.course_name %>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                                            <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6">
+                    <div class="course-card">
+                        <div class="pg-header">
+                            <h4 class="m-0 card-header-title">
+                                <i class="fas fa-layer-group me-3"></i>
+                                Master’s Degree
+                                <span class="ms-3">(2 Years)</span>
+                            </h4>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <ul class="program-list">
+                                <% coursesData.forEach(course=> { %>
+                                    <% if (course.course_type==="Master's Degree" ) { %>
+                                        <li>
+                                            <i class="fas fa-arrow-right"></i>
+                                            <a href="javascript:void(0)" class="text-decoration-none"
+                                                onclick="openAdmissionModal()">
+                                                <%= course.course_name %>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                                            <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="admissionModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Admission Application</h5>
+                    <button type="button" class="btn-close" onclick="closeAdmissionModal()"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form action="/save-admissions" method="POST">
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" name="applicant_full_name" class="form-control"
+                                    placeholder="John Doe" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" name="applicant_email" class="form-control"
+                                    placeholder="john@example.com" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Mobile Number</label>
+                                <input type="tel" name="applicant_mobile" class="form-control"
+                                    placeholder="+91 98765 43210" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Highest Qualification</label>
+                                <select name="highest_qualification" class="form-select" required>
+                                    <option selected disabled>Choose a qualification...</option>
+                                    <option value="ssc">SSC</option>
+                                    <option value="hsc">HSC</option>
+                                    <option value="diploma">Diploma</option>
+                                    <option value="bachelor">Bachelor's Degree</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Course Applied For</label>
+                                <input type="text" name="course_applied_for" list="courses" class="form-control"
+                                    placeholder="Choose a course...">
+
+                                <datalist id="courses">
+                                    <option value="Diploma of Electrical Engineering">
+                                    <option value="Diploma of Computer Engineering">
+                                    <option value="Diploma of Civil Engineering">
+                                    <option value="Diploma of Mechanical Engineering">
+                                    <option value="BE of Information Technology">
+                                    <option value="BE of Computer Science">
+                                    <option value="BE of Cyber Security">
+                                    <option value="BE of Artificial Intelligence and Machine Learning">
+                                    <option value="Bachelor of Computer Science">
+                                    <option value="Bachelor of Computer Application">
+                                    <option value="Bachelor of Science">
+                                    <option value="Bachelor of Business Administration">
+                                    <option value="ME of Computer Science">
+                                    <option value="ME of Cyber Security">
+                                    <option value="ME of Information Technology">
+                                    <option value="ME of Artificial Intelligence and Machine Learning">
+                                    <option value="Master of Computer Science">
+                                    <option value="Master of Computer Application">
+                                    <option value="Master of Business Administration">
+                                </datalist>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Percentage / CGPA</label>
+                                <input type="text" name="academic_score" class="form-control"
+                                    placeholder="85% or 8.5 CGPA" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Address</label>
+                                <textarea name="applicant_address" class="form-control" rows="3"
+                                    placeholder="Your full address" required></textarea>
+                            </div>
+
+                            <div class="col-12 mt-3">
+                                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">
+                                    Apply Now
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        let admissionModal;
+
+        function openAdmissionModal() {
+            const modalElement = document.getElementById('admissionModal');
+            admissionModal = new bootstrap.Modal(modalElement);
+            admissionModal.show();
+        }
+
+        function closeAdmissionModal() {
+            admissionModal.hide();
+        }
+    </script>
+
+
+    <%- include("footer.ejs") %>

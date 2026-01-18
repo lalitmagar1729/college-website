@@ -1,0 +1,68 @@
+<%- include("admin-topbar.ejs") %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center">Edit Faculty</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form action="/admin/update-faculty" method="post" enctype="multipart/form-data"
+            class="shadow-sm p-4 border rounded">
+
+            <input type="hidden" name="faculty_id" value="<%= facultyData[0].faculty_id %>">
+
+            <div class="row">
+
+              <div class="col-md-6 mb-3">
+                <label for="faculty_name" class="form-label">Name</label>
+                <input type="text" name="faculty_name" class="form-control" id="faculty_name" value="<%= facultyData[0].faculty_name %>"
+                  placeholder="Enter Faculty name" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="faculty_photo" class="form-label">Photo</label>
+                <input type="file" name="faculty_photo" class="form-control" id="faculty_photo" value="<%= facultyData[0].faculty_photo %>"
+                  placeholder="Upload Faculty photo">
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="faculty_designation" class="form-label">Designation</label>
+                <input type="text" name="faculty_designation" class="form-control" id="faculty_designation" value="<%= facultyData[0].faculty_designation %>"
+                  placeholder="Enter Faculty designation" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="faculty_dept" class="form-label">Department</label>
+                <input type="text" name="faculty_dept" class="form-control" id="faculty_dept" value="<%= facultyData[0].faculty_dept %>"
+                  placeholder="Enter Faculty department" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="faculty_qual" class="form-label">Qualification</label>
+                <input type="text" name="faculty_qual" class="form-control" id="faculty_qual" value="<%= facultyData[0].faculty_qual %>"
+                  placeholder="Enter Faculty qualification" required>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <label for="faculty_exp" class="form-label">Experience</label>
+                <input type="text" name="faculty_exp" class="form-control" id="faculty_exp" value="<%= facultyData[0].faculty_exp %>"
+                  placeholder="Enter Faculty experience" required>
+              </div>
+
+              <div class="col-12 text-center">
+                <button type="submit" class="btn btn-success px-4">
+                  Update Faculty
+                </button>
+              </div>
+
+            </div>
+          </form>
+
+    </div>
+  </div>
+
+</div>
+
+<%- include("admin-footer.ejs") %>

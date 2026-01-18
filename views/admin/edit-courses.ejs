@@ -1,0 +1,31 @@
+<%- include("admin-topbar.ejs") %>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center">Edit Courses</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <form action="/admin/update-courses" method="post">
+          <div class="mb-3">
+            <input type="hidden" name="course_id" value="<%= courseData[0].course_id %>">
+            <label for="course_type" class="form-label">Course Type:</label>
+            <input type="text" class="form-control" id="course_type" name="course_type"
+              value="<%= courseData[0].course_type %>">
+          </div>
+          <div class="mb-3">
+            <label for="course_name" class="form-label">Course Name: </label>
+            <input type="text" class="form-control" id="course_name" name="course_name"
+              value="<%= courseData[0].course_name %>">
+          </div>
+          <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-success">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <%- include("admin-footer.ejs") %>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Blue Theme</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-blue: #0d6efd;
+            --primary-dark-blue: #0a58ca;
+            --primary-light-blue: #e7f1ff;
+            --border-blue: #86b7fe;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(13, 110, 253, 0.1);
+            border: 1px solid rgba(13, 110, 253, 0.1);
+            overflow: hidden;
+        }
+
+        .login-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark-blue));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .login-body {
+            padding: 2rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--border-blue);
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark-blue));
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+        }
+
+        .input-group-text {
+            background-color: var(--primary-light-blue);
+            border-color: var(--border-blue);
+            color: var(--primary-blue);
+        }
+
+        .password-toggle {
+            background-color: white;
+            border-color: var(--border-blue);
+            color: var(--primary-blue);
+        }
+
+        .password-toggle:hover {
+            background-color: var(--primary-light-blue);
+        }
+
+        .forgot-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .forgot-link:hover {
+            color: var(--primary-dark-blue);
+            text-decoration: underline;
+        }
+
+        .login-footer {
+            padding: 1rem 2rem;
+            background-color: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+            text-align: center;
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Header -->
+            <div class="login-header">
+                <div class="mb-3">
+                    <i class="bi bi-shield-lock" style="font-size: 2rem;"></i>
+                </div>
+                <h1 class="h3 mb-2">Admin Dashboard</h1>
+                <p class="mb-0" style="opacity: 0.9;">Sign in to access the control panel</p>
+            </div>
+
+            <!-- Login Form -->
+            <div class="login-body">
+                <form action="/admin/login" method="POST">
+                    <!-- Error Message -->
+                    <% if (typeof err !=='undefined' && err) { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                <div>
+                                    <%= err %>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <% } %>
+
+                            <!-- Success Message (optional) -->
+                            <% if (typeof success !=='undefined' && success) { %>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill me-2"></i>
+                                        <div>
+                                            <%= success %>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                                <% } %>
+
+                                    <!-- Email Field -->
+                                    <div class="mb-4">
+                                        <label for="email" class="form-label fw-bold">Email Address</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-envelope-fill"></i>
+                                            </span>
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                placeholder="admin@example.com" required>
+                                        </div>
+                                        <div class="form-text text-muted">Enter your registered email address</div>
+                                    </div>
+
+                                    <!-- Password Field -->
+                                    <div class="mb-4">
+                                        <label for="password" class="form-label fw-bold">Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-lock-fill"></i>
+                                            </span>
+                                            <input type="password" class="form-control" id="password" name="password"
+                                                placeholder="Enter your password" required>
+                                            <button class="btn password-toggle" type="button" id="togglePassword">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                        </div>
+                                        <div class="form-text text-muted">Minimum 6 characters</div>
+                                    </div>
+
+                                   
+
+                                    <!-- Submit Button -->
+                                    <div class="d-grid mb-3">
+                                        <button type="submit" class="btn btn-primary btn-lg fw-bold">
+                                            <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+                                        </button>
+                                    </div>
+
+                                   
+                </form>
+            </div>
+
+            <!-- Footer -->
+            <div class="login-footer">
+                <div class="d-flex justify-content-between align-items-center">
+                    <small>
+                        <i class="bi bi-shield-check me-1"></i>Secure Connection
+                    </small>
+                    <small>
+                        <i class="bi bi-c-circle me-1"></i>2024 Admin Panel
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Password visibility toggle
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+                this.setAttribute('aria-label', 'Hide password');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+                this.setAttribute('aria-label', 'Show password');
+            }
+        });
+
+        // Auto-dismiss alerts after 5 seconds
+        document.addEventListener('DOMContentLoaded', function () {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function (alert) {
+                setTimeout(function () {
+                    const bsAlert = new bootstrap.Alert(alert);
+                    bsAlert.close();
+                }, 5000);
+            });
+
+        });
+        // Form validation
+        document.querySelector('form').addEventListener('submit', function (event) {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (!email || !password) {
+                event.preventDefault();
+                alert('Please fill in all required fields.');
+                return false;
+            }
+
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                event.preventDefault();
+                alert('Please enter a valid email address.');
+                document.getElementById('email').focus();
+                return false;
+            }
+
+            return true;
+        });
+    </script>
+</body>
+
+</html>

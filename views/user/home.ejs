@@ -1,10 +1,9 @@
 <!-- Navbar -->
 <%- include("navbar.ejs") %>
 
-  <!-- HERO SECTION (Sample Content) -->
   <section class="text-center bg-light mb-5 p-0 m-0">
     <div class="container-fluid">
-      <img src="/images/hero.jpeg" alt="Hero Image" class="img-fluid rounded" style="width: 100%; height: 100vh;">
+      <img src="/images/<%= general_info[0].college_image %>" alt="Hero Image" class="img-fluid rounded" style="width: 100%; height: 100vh;">
     </div>
   </section>
 
@@ -14,20 +13,14 @@
       <!-- Text -->
       <div class="col-lg-6 col-md-12 about-content text-center text-lg-start px-4">
         <h1 class="section-title">About Our College</h1>
-        <p>
-          Modern College is a premier educational institution dedicated to providing quality education and fostering
-          innovation. Established in 1995, we have been at the forefront of academic excellence.
-        </p>
-        <p>
-          Our campus provides state-of-the-art facilities, experienced faculty, and a vibrant learning environment.
-        </p>
-        <a href="/about" class="btn btn-primary about-btn">Learn More</a>
+        <%- aboutData[0].about_desc %>
+        <a href="/about" class="btn btn-primary about-btn">Read More</a>
       </div>
 
       <!-- Image -->
       <div class="col-lg-6 col-md-12 about-image text-center">
         <img
-          src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          src="images/<%= aboutData[0].about_image %>"
           class="img-fluid" alt="College Campus">
       </div>
 
@@ -65,7 +58,7 @@
               </ul>
             </div>
             <div class="card-footer">
-              <a href="/diploma-courses" class="btn btn-view-more">Explore Diplomas</a>
+              <a href="/courses" class="btn btn-view-more">Explore Diplomas</a>
             </div>
           </div>
         </div>
@@ -89,7 +82,7 @@
               </ul>
             </div>
             <div class="card-footer">
-              <a href="/bachelor-courses" class="btn btn-view-more">Explore Bachelor's</a>
+              <a href="/courses" class="btn btn-view-more">Explore Bachelor's</a>
             </div>
           </div>
         </div>
@@ -113,7 +106,7 @@
               </ul>
             </div>
             <div class="card-footer">
-              <a href="/master-courses" class="btn btn-view-more">Explore Master's</a>
+              <a href="/courses" class="btn btn-view-more">Explore Master's</a>
             </div>
           </div>
         </div>
@@ -216,7 +209,20 @@
 .courses-section .course-card:hover {
   transform: translateY(-10px);
   box-shadow: var(--card-hover-shadow);
+ 
+  animation: float 0.5s ease-in-out infinite;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+  behavior: smooth;
+  /* margin-bottom:-30px; */
 }
+
+@keyframes float {
+  0% {  position: relative;bottom: 5px; }
+  50% { position: relative;bottom: 5px; }
+  100% { position: relative;bottom: 5px; }
+}
+
 
 .courses-section .card-icon {
   width: 70px;
@@ -392,46 +398,19 @@
         <p class="section-subtitle text-muted">Numbers that speak louder than words</p>
       </div>
       <div class="row g-4">
-        <!-- Stat 1 -->
+
+       <% for(var i=0; i<acheivementsData.length; i++) { %>
         <div class="col-md-3 col-6">
           <div class="stat-card h-100">
             <div class="stat-icon-wrapper">
-              <i class="bi bi-briefcase-fill stat-icon"></i>
+              <i class="<%- acheivementsData[i].achievement_icon %> stat-icon"></i>
             </div>
-            <div class="stat-number" data-target="95">0%</div>
-            <p class="stat-label">Placement Record Rate</p>
+            <div class="stat-number" data-target="<%= acheivementsData[i].achievement_counter %>">0+</div>
+            <p class="stat-label"><%= acheivementsData[i].achievement_title %></p>
           </div>
         </div>
-        <!-- Stat 2 -->
-        <div class="col-md-3 col-6">
-          <div class="stat-card h-100">
-            <div class="stat-icon-wrapper">
-              <i class="bi bi-people-fill stat-icon"></i>
-            </div>
-            <div class="stat-number" data-target="1500">0+</div>
-            <p class="stat-label">Students Enrolled</p>
-          </div>
-        </div>
-        <!-- Stat 3 -->
-        <div class="col-md-3 col-6">
-          <div class="stat-card h-100">
-            <div class="stat-icon-wrapper">
-              <i class="bi bi-person-badge-fill stat-icon"></i>
-            </div>
-            <div class="stat-number" data-target="120">0+</div>
-            <p class="stat-label">Faculty Members</p>
-          </div>
-        </div>
-        <!-- Stat 4 -->
-        <div class="col-md-3 col-6">
-          <div class="stat-card h-100">
-            <div class="stat-icon-wrapper">
-              <i class="bi bi-award-fill stat-icon"></i>
-            </div>
-            <div class="stat-number" data-target="25">0+</div>
-            <p class="stat-label">Years of Excellence</p>
-          </div>
-        </div>
+        <% } %>
+
       </div>
     </div>
   </section>
@@ -510,11 +489,47 @@
       <p class="mb-4">
         Admissions Open for UG & PG Courses | Limited Seats Available
       </p>
-      <a href="#" class="btn btn-view-more px-5">
+      <a href="/admissions" class="btn btn-view-more px-5">
         Enroll Now
       </a>
     </div>
   </section>
+
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="col-lg-12 text-center">
+          <h2 class="section-title text-dark fw-bold">Meet our Faculty</h2>
+          <p class="section-subtitle text-muted">
+            Meet our dedicated faculty members who are committed to providing top-notch education and support to our students.
+          </p>
+        </div>
+    <div class="row gy-4">
+      
+      <% for(var i=0; i<facultyData.length; i++) { %>
+      <div class="col-lg-4 col-md-6">
+        <div class="faculty-card">
+          <div class="faculty-img-container">
+            <img src="images/<%- facultyData[i].faculty_photo %>" alt="<%- facultyData[i].faculty_name %>" class="faculty-img">
+          </div>
+          <div class="faculty-info">
+            <h4 class="faculty-name"><%- facultyData[i].faculty_name %></h4>
+            <span class="faculty-designation"><%- facultyData[i].faculty_designation %></span>
+            
+            <div class="faculty-details">
+              <p><i class="fas fa-building"></i> <strong>Dept:</strong> <%= facultyData[i].faculty_dept %></p>
+              <p><i class="fas fa-graduation-cap"></i> <strong>Qual:</strong> <%= facultyData[i].faculty_qual %></p>
+              <p><i class="fas fa-briefcase"></i> <strong>Exp:</strong> <%= facultyData[i].faculty_exp %></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <% } %>
+
+    </div>
+  </div>
+</section>
 
 
   <!-- Footer -->

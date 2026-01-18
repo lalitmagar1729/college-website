@@ -1,0 +1,54 @@
+<%- include('admin-topbar.ejs') %>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2>Edit About</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <form action="/admin/update-about" method="post" enctype="multipart/form-data">
+
+          <div class="row mb-3">
+
+
+            <div class="col-md-6">
+              <label for="image" class="form-label">Change Image</label>
+              <input type="file" name="about_image" class="form-control" value="<%= aboutone[0].about_image %>" id="image">
+            </div>
+
+            <div class="col-md-6 text-center">
+              <label class="form-label">Current Image:</label><br>
+              <img src="/images/<%= aboutone[0].about_image %>" alt="About Image" class="img-thumbnail"
+                style="max-width: 200px;">
+            </div>
+          </div>
+
+          <!-- Title -->
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="about_title" class="form-control" id="title"
+              value="<%= aboutone[0].about_title %>" required>
+          </div>
+
+          <!-- Description -->
+          <div class="mb-3">
+            <label for="about_description" class="form-label">Description:</label> 
+            <textarea name="about_desc" class="form-control" id="about_description"
+              rows="5" required><%= aboutone[0].about_desc %></textarea>
+          </div>
+
+          <!-- Submit -->
+          <div class="text-center">
+            <button type="submit" class="btn btn-success px-4">
+              Update About
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+
+    <%- include('admin-footer.ejs') %>

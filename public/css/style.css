@@ -21,6 +21,7 @@
 body {
   font-family: 'Inter', sans-serif;
   padding-top: 80px;
+  overflow-x: hidden;
   /* for fixed navbar */
 }
 
@@ -142,6 +143,80 @@ body {
 .about-image img:hover {
   transform: scale(1.03);
 }
+
+/* =========================
+   Faculty Section Styling
+   ========================= */
+
+
+  .faculty-card {
+    border: none;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .faculty-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(67, 97, 238, 0.15);
+  }
+
+  .faculty-img-container {
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .faculty-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .faculty-card:hover .faculty-img {
+    transform: scale(1.1);
+  }
+
+  .faculty-info {
+    padding: 1.5rem;
+  }
+
+  .faculty-name {
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.25rem;
+  }
+
+  .faculty-designation {
+    color: #2563EB;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .faculty-details {
+    font-size: 0.9rem;
+    color: #4b5563;
+  }
+
+  .faculty-details p {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .faculty-details i {
+    width: 20px;
+    color: #7C3AED;
+    margin-right: 8px;
+  }
+
+/* Card Layout */
 
 /* =========================
    Contact Section Styling

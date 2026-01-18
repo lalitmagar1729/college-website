@@ -1,0 +1,105 @@
+<%- include("admin-topbar.ejs") %>
+
+  <div class="container-fluid py-4">
+
+    <div class="row mb-3">
+      <div class="col-12 text-center">
+        <h3 class="fw-bold">Facilities</h3>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-12">
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseFacility" role="button"
+          aria-expanded="false" aria-controls="collapseFacility">
+          Add Facility
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="collapse" id="collapseFacility">
+          <div class="card shadow-sm">
+            <div class="card-body">
+
+              <form action="/admin/save-facility" method="post" enctype="multipart/form-data">
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" name="facility_title" class="form-control" id="title" placeholder="Enter title"
+                      required>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="file" name="facility_photo" class="form-control" id="image" required>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-12 mb-3">
+                    <label for="facility_description" class="form-label">Description</label>
+                    <textarea name="facility_desc" class="form-control" id="facility_description" rows="3"
+                      placeholder="Enter content" required></textarea>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-success px-4">
+                      Add Facility
+                    </button>
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Image</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if(facilitiesData.length > 0) { %>
+              <% for(let i=0; i<facilitiesData.length; i++) { %>
+                <tr>
+                  <td><%= i+1 %></td>
+                  <td><%= facilitiesData[i].facility_title %></td>
+                  <td><img src="/images/<%= facilitiesData[i].facility_photo %>" alt="Facility Image" style="width: 150px;"></td>
+                  <td><%= facilitiesData[i].facility_desc %></td>
+                  <td width="100">
+                    <a class="btn btn-sm btn-warning" href="/admin/edit-facility/<%= facilitiesData[i].facility_id %>"><i class="bi bi-pencil"></i></a>
+                    <a class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this facility?');" href="/admin/delete-facility/<%= facilitiesData[i].facility_id %>"><i class="bi bi-trash"></i></a>
+                  </td>
+                </tr>
+              <% } %>
+              <% } else { %>
+                <tr>
+                  <td colspan="5" class="text-center">No facilities found.</td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <%- include("admin-footer.ejs") %>

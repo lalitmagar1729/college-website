@@ -3,110 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error Occurred</title>
+    <title>Error</title>
+    
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
     <style>
-        body {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            min-height: 100vh;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        :root {
+            --error-color: #dc3545;
+            --error-light: #f8d7da;
+            --error-dark: #b02a37;
+            --bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
-        .error-container {
+        
+        body {
+            background: var(--bg-gradient);
             min-height: 100vh;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+        }
+        
+        .error-header {
+            background: linear-gradient(135deg, var(--error-color), var(--error-dark));
+            color: white;
+            border-radius: 12px 12px 0 0;
+            padding: 1.5rem;
+        }
+        
+        .error-card {
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+            border: none;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .error-icon-container {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: -40px auto 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .error-card {
-            max-width: 500px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: none;
-        }
+        
         .error-icon {
-            font-size: 4rem;
-            color: #dc3545;
+            font-size: 2.5rem;
+            color: var(--error-color);
         }
-        .error-message-box {
+        
+        .error-alert {
+            border-left: 4px solid var(--error-color);
+            background: var(--error-light);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+        
+        .error-details {
             background: #f8f9fa;
-            border-left: 4px solid #dc3545;
-            font-family: monospace;
-            white-space: pre-wrap;
-            word-break: break-word;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.875rem;
+        }
+        
+        .error-timestamp {
+            color: #6c757d;
+            font-size: 0.875rem;
+        }
+        
+        .btn-error {
+            background: var(--error-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-error:hover {
+            background: var(--error-dark);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
+        }
+        
+        .error-code {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--error-color);
+            opacity: 0.1;
+            position: absolute;
+            right: 2rem;
+            top: 1rem;
+        }
+        
+        .error-section {
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .error-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .error-actions {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 2rem;
+                right: 1rem;
+                top: 0.5rem;
+            }
+            
+            .error-icon-container {
+                width: 60px;
+                height: 60px;
+                margin: -30px auto 1rem;
+            }
+            
+            .error-icon {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container error-container">
+    <div class="container">
+        <!-- Error Code Badge -->
         <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-8">
-                <div class="error-card card p-4">
-                    <div class="card-body text-center">
-                        <!-- Error Icon -->
-                        <div class="mb-3">
-                            <i class="bi bi-x-circle-fill error-icon"></i>
+            <div class="col-12 col-lg-10">
+                <div class="error-card">
+                    <!-- Error Code -->
+                    <div class="error-code">
+                        <% if (typeof status !== 'undefined' && status) { %>
+                            <%= status %>
+                        <% } else { %>
+                            500
+                        <% } %>
+                    </div>
+                    
+                    <!-- Error Header -->
+                    <div class="error-header text-center">
+                        <h1 class="h3 mb-2">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            Error Occurred
+                        </h1>
+                        <p class="mb-0 opacity-75">Something went wrong while processing your request</p>
+                    </div>
+                    
+                    <!-- Error Icon -->
+                   
+                    
+                    <!-- Error Content -->
+                    <div class="card-body">
+                        <!-- Main Error Message -->
+                        <div class="text-center mb-4">
+                            <h3 class="h5 text-danger mb-2">
+                                <% if (typeof err === 'string') { %>
+                                    <%= err %>
+                                <% } else if (typeof err === 'object' && err.message) { %>
+                                    <%= err.message %>
+                                <% } else { %>
+                                    An unexpected error occurred
+                                <% } %>
+                            </h3>
+                            <p class="text-muted mb-0">
+                                <i class="bi bi-clock me-1"></i>
+                                <span class="error-timestamp">
+                                    <%= new Date().toLocaleString('en-US', { 
+                                        weekday: 'long', 
+                                        year: 'numeric', 
+                                        month: 'long', 
+                                        day: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        second: '2-digit',
+                                        timeZoneName: 'short'
+                                    }) %>
+                                </span>
+                            </p>
                         </div>
                         
-                        <!-- Title -->
-                        <h2 class="h4 text-danger mb-3">Error</h2>
-                        
-                        <!-- Error Message Container -->
-                        <div class="mb-4">
-                            <div class="error-message-box p-3 rounded text-start" id="errorMessage">
-                                <!-- Error message will be displayed here -->
+                        <!-- Error Alert -->
+                        <div class="error-alert">
+                            <div class="d-flex align-items-start">
+                                <i class="bi bi-info-circle-fill text-danger me-2 mt-1"></i>
+                                <div>
+                                    <strong>What happened?</strong>
+                                    <p class="mb-0">
+                                        The server encountered an error while processing your request. 
+                                        This might be a temporary issue or a bug in the application.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         
-                        <!-- Action Buttons -->
-                        <div class="d-flex gap-2 justify-content-center mt-4">
-                            <button onclick="window.location.href='/'" class="btn btn-primary btn-sm">
-                                <i class="bi bi-house me-1"></i>Home
+                        <!-- Error Details (Collapsible) -->
+                        <% if (typeof err === 'object' && (err.stack || err.code || err.name)) { %>
+                        <div class="error-section">
+                            <h5 class="mb-3">
+                                <a class="text-decoration-none text-dark" data-bs-toggle="collapse" href="#errorDetails" role="button">
+                                    <i class="bi bi-chevron-down me-2"></i>Technical Details
+                                </a>
+                            </h5>
+                            
+                            <div class="collapse" id="errorDetails">
+                                <div class="error-details p-3">
+                                    <% if (err.name) { %>
+                                        <div class="mb-2">
+                                            <strong>Error Type:</strong> <span class="text-danger"><%= err.name %></span>
+                                        </div>
+                                    <% } %>
+                                    
+                                    <% if (err.code) { %>
+                                        <div class="mb-2">
+                                            <strong>Error Code:</strong> <code><%= err.code %></code>
+                                        </div>
+                                    <% } %>
+                                    
+                                    <% if (err.stack) { %>
+                                        <div class="mb-0">
+                                            <strong>Stack Trace:</strong>
+                                            <pre class="mt-2 mb-0 text-wrap" style="font-size: 0.75rem; line-height: 1.4;"><%= err.stack %></pre>
+                                        </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                        
+                        <!-- Request Information (Optional) -->
+                        <% if (typeof req !== 'undefined') { %>
+                        <div class="error-section">
+                            <h5 class="mb-3">
+                                <a class="text-decoration-none text-dark" data-bs-toggle="collapse" href="#requestInfo" role="button">
+                                    <i class="bi bi-chevron-down me-2"></i>Request Information
+                                </a>
+                            </h5>
+                            
+                            <div class="collapse" id="requestInfo">
+                                <div class="error-details p-3">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <strong>URL:</strong> <code><%= req.originalUrl || req.url %></code>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <strong>Method:</strong> <span class="badge bg-info"><%= req.method %></span>
+                                        </div>
+                                        <% if (req.ip) { %>
+                                        <div class="col-md-6 mb-2">
+                                            <strong>IP Address:</strong> <code><%= req.ip %></code>
+                                        </div>
+                                        <% } %>
+                                        <% if (req.headers && req.headers['user-agent']) { %>
+                                        <div class="col-md-6 mb-2">
+                                            <strong>User Agent:</strong> 
+                                            <small class="text-muted"><%= req.headers['user-agent'] %></small>
+                                        </div>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="error-actions">
+                        <div class="d-flex flex-wrap gap-2 justify-content-center">
+                            <button onclick="window.location.href='/'" class="btn btn-primary">
+                                <i class="bi bi-house me-2"></i>Go to Homepage
                             </button>
-                            <button onclick="window.history.back()" class="btn btn-outline-secondary btn-sm">
-                                <i class="bi bi-arrow-left me-1"></i>Back
+                            
+                            <button onclick="window.history.back()" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>Go Back
                             </button>
+                            
+                            <% if (typeof err === 'object' && err.stack) { %>
+                            <button onclick="copyErrorDetails()" class="btn btn-outline-dark" id="copyBtn">
+                                <i class="bi bi-clipboard me-2"></i>Copy Error Details
+                            </button>
+                            <% } %>
+                            
+                            
+                        </div>
+                        
+                        <!-- Additional Help -->
+                        <div class="text-center mt-3">
+                            <small class="text-muted">
+                                Need help? <a href="/contact" class="text-decoration-none">Contact Support</a> or 
+                                check our <a href="/faq" class="text-decoration-none">FAQ</a>
+                            </small>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Debug Info (Only show in development) -->
+                <% if (process.env.NODE_ENV === 'development' && typeof err === 'object') { %>
+                <div class="alert alert-warning mt-3">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-bug-fill me-2"></i>
+                        <div>
+                            <strong>Development Mode Active</strong>
+                            <p class="mb-0 small">Full error details are shown because you're in development mode.</p>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
             </div>
         </div>
     </div>
 
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
-        // Function to get error message from URL
-        function getErrorMessage() {
-            const urlParams = new URLSearchParams(window.location.search);
-            let errorMsg = '';
+                const text = errorDetails.innerText;
+                navigator.clipboard.writeText(text).then(() => {
+                    const copyBtn = document.getElementById('copyBtn');
+                    const originalHTML = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="bi bi-check2 me-2"></i>Copied!';
+                    copyBtn.classList.remove('btn-outline-dark');
+                    copyBtn.classList.add('btn-success');
+                    
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalHTML;
+                        copyBtn.classList.remove('btn-success');
+                        copyBtn.classList.add('btn-outline-dark');
+                    }, 2000);
+                }).catch(err => {
+                    alert('Failed to copy error details: ' + err.message);
+                });
             
-            // Try different parameter names that might contain the error
-            const possibleParams = ['err.message', 'error', 'message', 'err', 'msg'];
-            
-            for (const param of possibleParams) {
-                const value = urlParams.get(param);
-                if (value) {
-                    errorMsg = decodeURIComponent(value);
-                    break;
-                }
-            }
-            
-            // If no error message found in URL, show a default
-            if (!errorMsg) {
-                errorMsg = 'An error occurred, but no specific error message was provided.';
-            }
-            
-            // Display the error message
-            document.getElementById('errorMessage').textContent = errorMsg;
-            
-            // Update page title
-            document.title = 'Error: ' + (errorMsg.length > 50 ? 
-                errorMsg.substring(0, 50) + '...' : errorMsg);
-        }
         
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', getErrorMessage);
+        // Auto-refresh page after 30 seconds (optional)
+        setTimeout(() => {
+            console.log('Page will refresh in 5 seconds to check if error is resolved...');
+        }, 30000);
     </script>
 </body>
 </html>

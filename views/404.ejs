@@ -20,6 +20,9 @@
             --dark-color: #212529;
             --gray-color: #6c757d;
             --success-color: #4cc9f0;
+            --warning-color: #ff9e00;
+            --gradient-primary: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            --gradient-accent: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
         }
         
         * {
@@ -36,6 +39,9 @@
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(67, 97, 238, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(247, 37, 133, 0.05) 0%, transparent 20%);
         }
         
         .container-404 {
@@ -50,25 +56,50 @@
             max-width: 900px;
             width: 100%;
             background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            padding: 3rem;
+            padding: 3.5rem;
             position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .error-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.12);
         }
         
         .error-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
         }
         
         .error-title {
-            font-size: 8rem;
+            font-size: 10rem;
             font-weight: 800;
             line-height: 1;
-            color: var(--primary-color);
-            text-shadow: 5px 5px 0 rgba(67, 97, 238, 0.1);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 8px 8px 0 rgba(67, 97, 238, 0.08);
             margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .error-title::after {
+            content: "";
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 8px;
+            background: var(--gradient-accent);
+            border-radius: 4px;
+            opacity: 0.6;
         }
         
         .error-subtitle {
@@ -79,27 +110,34 @@
         }
         
         .error-message {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--gray-color);
             max-width: 600px;
             margin: 0 auto 2.5rem;
-            line-height: 1.6;
+            line-height: 1.7;
         }
         
         .error-visual {
             position: relative;
-            height: 200px;
+            height: 220px;
             margin: 3rem 0;
             display: flex;
             justify-content: center;
             align-items: center;
         }
         
+        .visual-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        
         .broken-link {
-            font-size: 5rem;
+            font-size: 4.5rem;
             color: var(--accent-color);
             position: absolute;
             animation: float 3s ease-in-out infinite;
+            z-index: 2;
         }
         
         .broken-link:nth-child(1) {
@@ -126,119 +164,202 @@
             animation-delay: 1.5s;
         }
         
+        .broken-chain {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            opacity: 0.8;
+        }
+        
+        .search-box {
+            max-width: 500px;
+            margin: 2.5rem auto;
+        }
+        
+        .search-box .input-group {
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .search-box .input-group:focus-within {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(67, 97, 238, 0.15);
+        }
+        
+        .search-box .form-control {
+            border-radius: 50px 0 0 50px;
+            border: none;
+            padding: 1rem 1.8rem;
+            font-size: 1rem;
+            background-color: #f8f9fa;
+        }
+        
+        .search-box .form-control:focus {
+            background-color: white;
+            box-shadow: none;
+        }
+        
+        .search-box .btn {
+            border-radius: 0 50px 50px 0;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box .btn:hover {
+            background: var(--secondary-color);
+            transform: translateX(2px);
+        }
+        
         .error-code {
-            background-color: var(--light-color);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin: 2rem 0;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin: 2.5rem 0;
             border-left: 5px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .error-code:hover {
+            background-color: #f0f2f5;
+            transform: translateY(-2px);
         }
         
         .error-code h5 {
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .error-code h5 i {
+            font-size: 1.2rem;
         }
         
         .error-code code {
             color: var(--accent-color);
             font-size: 0.9rem;
             word-break: break-all;
+            background-color: rgba(247, 37, 133, 0.05);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
         }
         
         .action-buttons {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 1.2rem;
+            margin-top: 2.5rem;
         }
         
         .btn-404 {
-            padding: 0.8rem 1.8rem;
+            padding: 1rem 2.2rem;
             border-radius: 50px;
             font-weight: 600;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.7rem;
+            border: none;
+            cursor: pointer;
         }
         
         .btn-primary-404 {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
+            background: var(--gradient-primary);
+            color: white;
         }
         
         .btn-primary-404:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+            box-shadow: 0 12px 25px rgba(67, 97, 238, 0.25);
         }
         
         .btn-outline-404 {
             color: var(--primary-color);
-            border-color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            background: transparent;
         }
         
         .btn-outline-404:hover {
             background-color: var(--primary-color);
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+            box-shadow: 0 12px 25px rgba(67, 97, 238, 0.15);
         }
         
-        .search-box {
-            max-width: 500px;
-            margin: 2rem auto;
-        }
-        
-        .search-box .input-group {
-            border-radius: 50px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .search-box .form-control {
-            border-radius: 50px 0 0 50px;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-        }
-        
-        .search-box .btn {
-            border-radius: 0 50px 50px 0;
-            background-color: var(--primary-color);
+        .btn-accent-404 {
+            background: var(--gradient-accent);
             color: white;
-            border: none;
-            padding: 0.8rem 1.8rem;
+        }
+        
+        .btn-accent-404:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(247, 37, 133, 0.25);
         }
         
         .error-footer {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
+            margin-top: 3.5rem;
+            padding-top: 2.5rem;
             border-top: 1px solid #eee;
             color: var(--gray-color);
             font-size: 0.9rem;
         }
         
+        .error-footer a {
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .error-footer a:hover {
+            color: var(--accent-color);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
         @keyframes float {
             0%, 100% {
-                transform: translateY(0);
+                transform: translateY(0) rotate(0deg);
             }
             50% {
-                transform: translateY(-15px);
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.6;
             }
         }
         
         @media (max-width: 768px) {
             .error-content {
-                padding: 2rem 1.5rem;
+                padding: 2.5rem 1.8rem;
             }
             
             .error-title {
-                font-size: 6rem;
+                font-size: 7rem;
             }
             
             .error-subtitle {
@@ -246,7 +367,7 @@
             }
             
             .broken-link {
-                font-size: 3.5rem;
+                font-size: 3rem;
             }
             
             .action-buttons {
@@ -256,22 +377,52 @@
             
             .btn-404 {
                 width: 100%;
-                max-width: 300px;
+                max-width: 320px;
             }
         }
         
         @media (max-width: 576px) {
             .error-title {
-                font-size: 5rem;
+                font-size: 5.5rem;
             }
             
             .error-subtitle {
                 font-size: 1.7rem;
             }
             
-            .broken-link {
-                font-size: 2.8rem;
+            .error-message {
+                font-size: 1rem;
             }
+            
+            .broken-link {
+                font-size: 2.5rem;
+            }
+            
+            .error-content {
+                padding: 2rem 1.5rem;
+            }
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 1000;
+            max-width: 350px;
+            display: none;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
@@ -283,29 +434,14 @@
                 <h2 class="error-subtitle">Page Not Found</h2>
                 <p class="error-message">Oops! The page you're looking for seems to have wandered off into the digital void. Don't worry, you can find your way back using the options below.</p>
             </div>
-            
-            <div class="error-visual">
-                <i class="fas fa-link-slash broken-link"></i>
-                <i class="fas fa-unlink broken-link"></i>
-                <i class="fas fa-ban broken-link"></i>
-                <i class="fas fa-exclamation-triangle broken-link"></i>
-            </div>
-            
-            <div class="search-box">
-                <p class="text-center mb-3">Try searching for what you need:</p>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search our website..." id="searchInput">
-                    <button class="btn" type="button" id="searchButton">
-                        <i class="fas fa-search"></i> Search
-                    </button>
-                </div>
-            </div>
+        
             
             <div class="error-code">
-                <h5>Error Details:</h5>
+                <h5><i class="fas fa-bug"></i> Error Details:</h5>
                 <code>GET /page-not-found HTTP/1.1</code><br>
                 <code>Status: 404 Not Found</code><br>
-                <code>Requested URL: <span id="current-url"></span></code>
+                <code>Requested URL: <span id="current-url"></span></code><br>
+                <code>Timestamp: <span id="current-time"></span></code>
             </div>
             
             <div class="action-buttons">
@@ -315,8 +451,8 @@
                 <button class="btn btn-outline-404 btn-404" id="goBackBtn">
                     <i class="fas fa-arrow-left"></i> Go Back
                 </button>
-                <button class="btn btn-outline-404 btn-404" id="contactBtn">
-                    <i class="fas fa-envelope"></i> Contact Support
+                <button class="btn btn-accent-404 btn-404" id="contactBtn">
+                    <i class="fas fa-life-ring"></i> Get Help
                 </button>
             </div>
             
@@ -326,27 +462,71 @@
             </div>
         </div>
     </div>
+    
+    <div class="notification" id="notification">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-check-circle me-2" style="font-size: 1.2rem;"></i>
+            <span id="notification-text">Notification message</span>
+        </div>
+    </div>
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Set current URL in the error details
+        // Set current URL and time in the error details
         document.getElementById('current-url').textContent = window.location.href;
+        document.getElementById('current-time').textContent = new Date().toLocaleString();
+        
+        // Notification system
+        function showNotification(message, isSuccess = true) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notification-text');
+            
+            notificationText.textContent = message;
+            
+            if (isSuccess) {
+                notification.style.background = 'linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%)';
+            } else {
+                notification.style.background = 'linear-gradient(135deg, #f72585 0%, #b5179e 100%)';
+            }
+            
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 400);
+            }, 4000);
+        }
         
         // Go Home button functionality
         document.getElementById('goHomeBtn').addEventListener('click', function() {
-            window.location.href = '/';
+            showNotification('Redirecting to homepage...');
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 500);
         });
         
         // Go Back button functionality
         document.getElementById('goBackBtn').addEventListener('click', function() {
-            window.history.back();
+            if (window.history.length > 1) {
+                showNotification('Going back to previous page...');
+                setTimeout(() => {
+                    window.history.back();
+                }, 500);
+            } else {
+                showNotification('No previous page in history', false);
+            }
         });
         
         // Contact Support button functionality
         document.getElementById('contactBtn').addEventListener('click', function() {
-            alert('Redirecting to contact support page...');
+            showNotification('Opening support options...');
             // In a real application, you would redirect to the contact page
             // window.location.href = '/contact';
         });
@@ -362,11 +542,11 @@
         function performSearch() {
             const searchTerm = document.getElementById('searchInput').value.trim();
             if (searchTerm) {
-                alert(`Searching for: "${searchTerm}"\nIn a real application, this would redirect to search results.`);
+                showNotification(`Searching for: "${searchTerm}"`);
                 // In a real application, you would redirect to search results
                 // window.location.href = `/search?q=${encodeURIComponent(searchTerm)}`;
             } else {
-                alert('Please enter a search term.');
+                showNotification('Please enter a search term.', false);
                 document.getElementById('searchInput').focus();
             }
         }
@@ -374,7 +554,15 @@
         // Report error link
         document.getElementById('reportError').addEventListener('click', function(e) {
             e.preventDefault();
-            alert('Thank you for reporting the error. Our team will look into it.');
+            showNotification('Thank you for reporting the error. Our team will look into it.');
+            
+            // In a real application, you would send this data to your server
+            const errorData = {
+                url: window.location.href,
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent
+            };
+            console.log('Error reported:', errorData);
         });
         
         // Add some interactive animation to the 404 number
@@ -386,6 +574,24 @@
         
         errorTitle.addEventListener('mouseout', function() {
             this.style.transform = 'scale(1)';
+        });
+        
+        // Add hover effect to broken chain icons
+        const brokenLinks = document.querySelectorAll('.broken-link');
+        brokenLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.2) rotate(15deg)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+        
+        // Auto-focus search input on page load
+        window.addEventListener('load', function() {
+            document.getElementById('searchInput').focus();
         });
     </script>
 </body>

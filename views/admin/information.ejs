@@ -1,0 +1,79 @@
+<%- include("admin-topbar.ejs") %>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center">General Info</h2>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-12">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Map</th>
+                <th>Facebook Link</th>
+                <th>Instagram Link</th>
+                <th>Youtube Link</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if(infoData.length> 0) { %>
+                <% for(let i=0; i < infoData.length; i++) { %>
+                  <tr>
+                    <td>
+                      <%= infoData[i].college_name %>
+                    </td>
+                    <td>
+                      <img src="/images/<%= infoData[i].college_image %>" alt="<%= infoData[i].college_name %>" style="width: 100px; height: auto;">
+                    </td>
+                    <td>
+                      <%= infoData[i].college_phone %>
+                    </td>
+                    <td>
+                      <%= infoData[i].college_email %>
+                    </td>
+                    <td>
+                      <%= infoData[i].college_address %>
+                    </td>
+                    <td style="white-space: nowrap; width:10px;">
+                      <%- infoData[i].college_map %>
+                    </td>
+
+                    <td>
+                      <%= infoData[i].college_facebook.length> 15 ? infoData[i].college_facebook.substring(0, 15) +
+                        "..." : infoData[i].college_facebook %>
+                    </td>
+                    <td>
+                      <%= infoData[i].college_instagram.length> 15 ? infoData[i].college_instagram.substring(0, 15) +
+                        "..." : infoData[i].college_instagram %>
+                    </td>
+                    <td>
+                      <%= infoData[i].college_youtube.length> 15 ? infoData[i].college_youtube.substring(0, 15) + "..."
+                        : infoData[i].college_youtube %>
+                    </td>
+                    <td>
+                      <a href="/admin/edit-information/<%= infoData[i].info_id %>" class="btn btn-warning"><i
+                          class="bi bi-pencil"></i></a>
+                    </td>
+                  </tr>
+                  <% } %>
+                    <% }else { %>
+                      <tr>
+                        <td colspan="9">No information found.</td>
+                      </tr>
+                      <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include("admin-footer.ejs") %>
