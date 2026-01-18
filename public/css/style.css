@@ -22,7 +22,6 @@ body {
   font-family: 'Inter', sans-serif;
   padding-top: 80px;
   overflow-x: hidden;
-  overflow-y: hidden;
   /* for fixed navbar */
 }
 
